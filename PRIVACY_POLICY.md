@@ -1,82 +1,98 @@
-# 律动健走 (WalkFit) 隐私政策与 Apple HealthKit 数据声明
-# WalkFit Privacy Policy & Apple HealthKit Disclosure
+# 律动健走 (WalkFit) 隐私政策 | Privacy Policy | プライバシーポリシー
 
-**生效日期 / Effective Date:** 2026-11-04  
-**开发者 / Developer:** Chunhong Tang (t58@163.com)  
-**应用名称 / App Name:** 律动健走 - 3+3间歇快慢交替步行节拍器 (WalkFit: 3x3 Interval Walking, Bundle ID: com.walkfit.app.ios)
-
----
-
-## 一、中文版隐私政策 (Chinese Privacy Policy)
-
-### 1. 核心隐私承诺（100% 本地沙盒存储 · 免注册零上传）
-**律动健走 (WalkFit)** 是一款遵循“本地隐私优先 (Local-First Privacy)”原则设计的科学运动健康应用。
-- **无需注册或登录账号**：您无需提供手机号、邮箱、姓名或任何社交账号即可完整使用本应用全部功能。
-- **100% 设备本地存储**：您的个人生理参数（年龄、身高、体重、静息心率）、历史健走记录、运动轨迹及偏好设置均加密保存在您 iPhone/iPad 或 Android 设备本机的沙盒存储中。
-- **零云端上传与零第三方共享**：本应用未接入任何第三方广告 SDK 或用户行为追踪分析 SDK，**绝不会**将您的个人数据、健康数据或位置轨迹上传至任何外部服务器，亦**绝不会**出售、出租或共享给任何第三方。
-
-### 2. Apple HealthKit（苹果健康）数据使用专项声明 (Guideline 5.1.3 Compliance)
-当您主动开启“Apple Watch & 苹果健康同步”并授予系统权限后：
-- **读取的数据类型 (NSHealthShareUsageDescription)**：实时心率（`HKQuantityTypeIdentifierHeartRate`），仅用于在 3+3 间歇快走期间实时计算您的储备心率百分比（%HRR）并提供运动强度节拍引导。
-- **写入的数据类型 (NSHealthUpdateUsageDescription)**：步行训练记录（`HKWorkout`）、主动消耗能量（`HKQuantityTypeIdentifierActiveEnergyBurned`）、步数（`HKQuantityTypeIdentifierStepCount`）与步行距离（`HKQuantityTypeIdentifierDistanceWalkingRunning`），仅用于在训练结束保存时写入系统“健康”App 并帮助您合上 Apple Watch 健身圆环。
-- **严格保护承诺**：
-  1. 从 Apple HealthKit 读取的所有健康与心率数据**仅在您的设备本地内存与本地沙盒中处理**，绝不传输至任何外部服务器；
-  2. 我们**绝不会**将 HealthKit 数据用于广告宣传、市场营销、用户画像或任何基于使用情况的数据挖掘（Data Mining）；
-  3. 我们**绝不会**向任何第三方披露、共享或出售通过 HealthKit 获取的任何数据。
-
-### 3. 硬件传感器权限说明
-- **运动与健身传感器 (CoreMotion / CMPedometer / CMAltimeter)**：用于实时测量步频（SPM）、推算动态步幅、检测气压海拔变化以及静止 2.5 秒自动暂停与迈步 4 步自动恢复。
-- **位置权限 (CoreLocation)**：仅在您进行户外健走训练时，用于绘制本机运动轨迹与校准步行距离/配速。位置数据仅保存在本机历史记录中，绝不上传。
-- **蓝牙权限 (CoreBluetooth)**：仅用于搜索并直连标准 BLE 0x180D 心率胸带或心率手环，读取实时心率广播。
-- **媒体库与相册权限 (NSAppleMusicUsageDescription / NSPhotoLibraryAddUsageDescription)**：分别用于在运动舱内提供系统音乐播放控制（配合 48kHz 节拍器自动闪避混音）以及在您主动点击“保存海报到相册”时写入运动分享海报图片。
-
-### 4. 数据管理与彻底删除
-- 您可随时在应用内「历史记录 (Tab 3)」或「我的设置 (Tab 4)」中删除单条或全部历史训练数据。
-- 当您从设备中卸载本应用时，保存在本机沙盒中的所有个人配置与历史记录将被操作系统立即彻底清除。
-- 您可随时前往 iOS「设置」>「健康」>「数据访问与设备」或「隐私与安全性」撤回任何已授予的权限。
-
-### 5. 非医疗器械免责声明 (Medical Disclaimer - Guideline 1.4.1)
-本应用提供的间歇走节拍、心率区间（Karvonen %HRR）、摄氧量（VO2max）与能量代谢估算基于公开同行评审运动生理学文献（如信州大学 Nose H. 教授团队 *Mayo Clinic Proceedings* 2007, PMID: 17605959 等），**仅用于一般运动健身引导与体能自我管理，不属于医疗器械，亦不构成任何医疗诊断、治疗或临床建议**。在开始任何高强度运动计划或做出健康决定前，请咨询专业医师。
-
-### 6. 联系我们
-如您对本隐私政策或数据处理有任何疑问，请联系开发者：
-- **联系人**：Chunhong Tang
-- **电子邮箱**：t58@163.com
+**生效日期 / Effective Date / 発効日**: 2026-03-31  
+**最后更新 / Last Updated / 最終更新日**: 2026-11-08 (v6.1.0)  
+**开发者与运营主体 / Developer**: WalkFit Lab (`com.walkfit.app.ios`)
 
 ---
 
-## 二、English Privacy Policy & HealthKit Disclosure
+## 一、中文隐私政策 (Chinese Privacy Policy)
 
-### 1. Local-First Privacy Commitment (No Account Required · Zero Cloud Upload)
-**WalkFit: 3x3 Interval Walking** is built on a strict **100% On-Device Local Sandbox** architecture:
-- **No Sign-In or Registration**: You can use all features of the app immediately without creating an account or providing any personal contact details.
-- **100% On-Device Storage**: Your physiological profile (age, height, weight, resting heart rate), workout history, GPS routes, and preferences are stored exclusively in local device storage (`UserDefaults` / app sandbox).
-- **Zero Cloud Upload & Zero Third-Party Sharing**: WalkFit contains no third-party advertising SDKs or tracking analytics. We **never** upload, sell, rent, or share your personal, health, or location data with any external servers or third parties.
+欢迎使用 **律动健走 (WalkFit) — 3+3间歇快慢交替步行节拍器与夜间神经助眠剧场**（以下简称“本应用”）。我们深知运动、健康与睡眠数据的敏感性与重要性，本应用严格遵循 **“本地离线优先、数据最小化、零第三方追踪、零录音上传”** 的设计原则。
 
-### 2. Apple HealthKit Data Disclosure (App Store Guideline 5.1.3)
-When you explicitly grant Apple HealthKit permission inside WalkFit:
-- **Health Data Read (`NSHealthShareUsageDescription`)**: Live Heart Rate (`HKQuantityTypeIdentifierHeartRate`) is read solely during active 3+3 interval walking sessions to calculate your real-time Heart Rate Reserve percentage (`%HRR`) and provide audio cadence guidance.
-- **Health Data Written (`NSHealthUpdateUsageDescription`)**: Completed walking workouts (`HKWorkout`), active energy burned (`HKQuantityTypeIdentifierActiveEnergyBurned`), step count (`HKQuantityTypeIdentifierStepCount`), and walking distance (`HKQuantityTypeIdentifierDistanceWalkingRunning`) are written to Apple Health so your workouts contribute to your Apple Watch Fitness Rings.
-- **Strict HealthKit Guarantees**:
-  1. All HealthKit data is processed **strictly on your device** and is never transmitted to any external server.
-  2. WalkFit **never** uses HealthKit data for advertising, marketing, or use-based data mining.
-  3. WalkFit **never** discloses or sells HealthKit data to any third party.
+### 1. 我们处理哪些信息及用途（100% 设备本地存储）
+本应用**无需注册账号**即可完整使用。所有个人体征参数、运动记录与睡眠节律账本均 **100% 存储在您的手机本地沙盒 (`UserDefaults` / 本地加密存储)** 中，绝不上传至任何开发者服务器：
 
-### 3. Hardware Sensor Permissions
-- **Motion & Fitness (`CoreMotion` / `CMPedometer` / `CMAltimeter`)**: Used for real-time cadence (SPM), Weinberg dynamic stride estimation, barometric elevation tracking, and 2.5s stationary auto-pause / 4-step auto-resume.
-- **Location (`CoreLocation`)**: Used only during active outdoor workouts to record your walking route and calibrate distance/pace locally on your device.
-- **Bluetooth (`CoreBluetooth`)**: Used solely to scan and connect to standard BLE `0x180D` heart rate chest straps and wristbands.
-- **Media Library & Photo Library (`NSAppleMusicUsageDescription` / `NSPhotoLibraryAddUsageDescription`)**: Used for in-cockpit music playback controls alongside the 48kHz metronome, and for saving your workout summary poster image to Photos when requested.
+1. **精确与粗略位置权限 (`NSLocationWhenInUseUsageDescription` / `NSLocationAlwaysAndWhenInUseUsageDescription`)**：
+   - **用途**：仅在您主动开启户外健走并授权定位时，用于在您的手机本地绘制高德/Apple Maps双引擎配速色温轨迹、计算实时海拔爬升、移动距离及获取目的地周边离线/实时气象指数。
+   - **存储与保护**：轨迹坐标点仅保存在您的设备本地运动历史记录中。您可随时通过“历史记录 -> 删除”或“隐私与数据管理 -> 擦除所有本地数据”彻底销毁。
 
-### 4. Data Retention & Deletion
-- You may clear your workout history or reset your local profile at any time within the app (`Settings Tab`).
-- Uninstalling the app permanently erases all local sandbox data.
-- You can revoke HealthKit, Location, Motion, or Bluetooth permissions anytime in **iOS Settings > Privacy & Security**.
+2. **运动与健身传感器 (`NSMotionUsageDescription`) 与系统健康 (`NSHealthShareUsageDescription` / `NSHealthUpdateUsageDescription`)**：
+   - **用途**：读取设备内置计步传感器 (`CMPedometer`) 以计算实时步频 (SPM)、步数及自动暂停状态；在您明确授权 Apple Health (HealthKit) 后，在本地读取心率、静息心率、步数，并将完成的健走消耗热量与步行距离写入“系统健康”应用。
+   - **存储与保护**：我们绝不会将通过 HealthKit 或运动传感器获取的数据用于广告营销、用户画像或出售给任何第三方数据经纪商。
 
-### 5. Medical Disclaimer (Guideline 1.4.1)
-WalkFit is intended for general fitness and wellness guidance only. It is **not a medical device** and does not provide medical diagnosis or treatment advice. Always consult a qualified physician before beginning any new exercise program.
+3. **五源传感神经助眠剧场 4.0（夜间本地内存瞬时节律推演，100% 零录音、零上传）**：
+   - **用途**：当您在夜间开启“五源传感神经助眠剧场 4.0”并选择包含声学感知的传感模式时，麦克风 (`NSMicrophoneUsageDescription`) 与加速度计/陀螺仪仅在设备本地 RAM 内存中实时计算声压包络能量 (RMS) 与胸腹呼吸起伏节律，用于驱动 48kHz 助眠声景自适应柔化与睡眠呼吸节律评估。
+   - **严格隐私承诺**：**本应用绝不录制、不保存任何原始音频文件，亦绝不向任何云端服务器上传任何声音或传感器数据**。您也可随时在助眠剧场内切换为“枕边床垫微振模式”或关闭麦克风权限。
 
-### 6. Contact Information
-If you have any questions regarding privacy or support, please contact:
-- **Developer**: Chunhong Tang
-- **Email**: t58@163.com
+4. **蓝牙外设连接 (`NSBluetoothAlwaysUsageDescription`)**：
+   - **用途**：仅在您主动打开“BLE 蓝牙心率外设直连面板”时，用于扫描并连接符合开放标准的 **BLE 0x180D 蓝牙心率胸带、心率臂带或运动手环**，以实时展示精准心率与梅脱 (METs) 区间。
+
+5. **后台音频播放 (`UIBackgroundModes: audio`)**：
+   - **用途**：当您在健走或夜间助眠过程中将应用切入后台或锁屏息屏时，持续为您提供 48kHz 原生节拍器提示音、和弦伴奏、阶段切换语音播报及夜间 48kHz 神经助眠和弦/自然声景。
+
+6. **相册保存权限 (`NSPhotoLibraryAddUsageDescription`)**：
+   - **用途**：仅在您主动点击“保存高清运动海报到相册”时，将本地渲染生成的分享图片写入系统相册。本应用不读取您的相册历史照片。
+
+### 2. 应用内购买与订阅 (WalkFit Pro)
+- 本应用内的 `WalkFit Pro` 会员订阅（月度订阅 `com.walkfit.pro.monthly`、年度订阅 `com.walkfit.pro.yearly`）与终身买断（`com.walkfit.pro.lifetime`）全部通过 **Apple 官方 StoreKit 2 (App Store)** 安全处理。
+- 我们不收集、不接触您的银行卡号、Apple ID 密码或支付账单详情；恢复购买与权益校验均直接通过 Apple 官方加密收据在设备端验证。
+
+### 3. 第三方 SDK 与数据共享声明
+- **零广告追踪**：本应用不包含任何第三方跨应用追踪 SDK，不请求 IDFA 广告标识符 (`NSUserTrackingUsageDescription`)，不向任何广告网络共享您的个人数据。
+- **气象接口**：当您开启户外气象同步时，应用仅使用去标识化的经纬度网格向公开气象服务请求实时温度、湿度与空气质量指数，不包含任何设备标识符或个人身份信息。
+
+### 4. 您的数据控制权与一键擦除
+- 您可以随时在应用内 **“方案与设置 -> 隐私与数据管理 -> 一键清除所有本地运动与睡眠数据”**，或直接卸载本应用，立即且不可逆地清除保存在本机上的全部健走历史、睡眠账本与个人体征设置。
+
+### 5. 联系我们
+如您对本隐私政策或数据处理有任何疑问，请通过以下方式联系我们：
+- **电子邮箱**：support@walkfit.app
+- **在线技术支持与问题反馈**：https://github.com/fly699/i2cdevlib/issues
+
+---
+
+## 二、English Privacy Policy
+
+Welcome to **WalkFit — 3+3 Interval Walking Metronome & 5-Sensor Sleep Sanctuary** ("the App"). We respect your privacy and built WalkFit strictly around **100% On-Device Storage, Data Minimization, Zero Ad Tracking, and Zero Audio Recording**.
+
+### 1. Information We Process (100% Stored Locally on Your Device)
+WalkFit requires **no account registration**. All personal physical parameters, walking workout logs, and sleep rhythm records are stored **100% locally on your device** and are never uploaded to any developer servers:
+
+1. **Location Data (`WhenInUse` / `AlwaysAndWhenInUse`)**:
+   - **Purpose**: Used exclusively during active outdoor walking workouts (when authorized by you) to render pace-colored GPS route tracks, calculate elevation gain and distance, and fetch local weather/UV indices.
+   - **Storage**: Route coordinates remain strictly on your device and can be deleted at any time from History or Settings.
+
+2. **Motion Sensors (`CMPedometer`) & Apple Health (`HealthKit`)**:
+   - **Purpose**: Reads step cadence (SPM) and step counts for real-time 3+3 interval coaching; with your explicit authorization, reads heart rate and step metrics from Apple Health and writes completed walking workouts back to the Health app.
+   - **Protection**: HealthKit and motion data are never used for advertising, marketing, or shared with any third parties.
+
+3. **5-Sensor Sleep Sanctuary 4.0 (Real-Time RAM Rhythm Processing, Zero Audio Recording)**:
+   - **Purpose**: When you use Sleep Sanctuary 4.0 with acoustic sensing enabled, the microphone (`NSMicrophoneUsageDescription`) and accelerometer/gyroscope process sound pressure envelopes (RMS) and breathing rhythms strictly in volatile on-device RAM to drive real-time 48kHz sleep soundscape softening and sleep stage estimation.
+   - **Strict Guarantee**: **WalkFit NEVER records, saves, or transmits any audio files or voice data to any server.**
+
+4. **Bluetooth LE Peripherals (`CoreBluetooth`)**:
+   - **Purpose**: Used only when you open the Bluetooth Heart Rate Hub to scan and connect to standard **Bluetooth LE (0x180D) heart rate chest straps, armbands, or fitness bands** for real-time BPM and METs display.
+
+5. **Background Audio (`UIBackgroundModes: audio`)**:
+   - **Purpose**: Ensures uninterrupted 48kHz walking metronome beats, chord accompaniment, interval voice coaching, and 48kHz sleep soundscapes when the screen is locked or when you switch to the iOS Home Screen.
+
+6. **In-App Purchases (`StoreKit 2`)**:
+   - All `WalkFit Pro` subscriptions (`com.walkfit.pro.monthly`, `com.walkfit.pro.yearly`) and Lifetime unlock (`com.walkfit.pro.lifetime`) are processed exclusively by Apple via StoreKit 2. We never access your payment card details.
+
+### 2. Contact Us
+If you have any questions regarding privacy or data protection, please contact us at:
+- **Email**: support@walkfit.app
+- **Support Page**: https://github.com/fly699/i2cdevlib/blob/walkfit-legal/SUPPORT.md
+
+---
+
+## 三、日本語プライバシーポリシー (Japanese Privacy Policy)
+
+**WalkFit（律動インターバル速歩 ＆ 五感センサー睡眠シアター 4.0）**（以下「本アプリ」）は、ユーザーのプライバシーを最優先に設計されており、**「アカウント登録不要・100%端末内ローカル保存・広告トラッキングゼロ・録音ゼロ」**を徹底しています。
+
+1. **端末内ローカル処理とデータ保護**：
+   - **位置情報・モーションセンサー・Apple ヘルスケア (HealthKit)**：屋外ウォーキング時のルート軌跡描画、歩調（SPM）計測、およびヘルスケア連携のためにのみ使用され、すべてお使いの iPhone 内にのみ保存されます。外部サーバーへの送信や第三者への提供は一切行いません。
+   - **睡眠シアター 4.0（録音ゼロ・完全ローカル処理）**：睡眠中の呼吸リズムおよび音響包絡線（RMS）解析は、端末のメモリ（RAM）内でリアルタイムに計算されるのみで、**音声データの録音・保存・外部送信は一切行いません**。
+   - **Bluetooth 心拍計連携 ＆ バックグラウンド再生**：標準 BLE (0x180D) 心拍センサーとの接続、および画面ロック中・バックグラウンドでの 48kHz メトロノーム／睡眠サウンド再生のためにのみ使用されます。
+2. **お問い合わせ**：support@walkfit.app
