@@ -1,8 +1,9 @@
 # 律动健走 (WalkFit) 隐私政策 | Privacy Policy | プライバシーポリシー
 
 **生效日期 / Effective Date / 発効日**: 2026-03-31  
-**最后更新 / Last Updated / 最終更新日**: 2026-11-08 (v6.1.0)  
-**开发者与运营主体 / Developer**: WalkFit Lab (`com.walkfit.app.ios`)
+**最后更新 / Last Updated / 最終更新日**: 2026-11-10 (v6.1.0)  
+**开发者与运营主体 / Developer**: WalkFit Lab (`com.walkfit.app.ios` / `com.walkfit.app.china` / `com.walkfit.app.global`)  
+**工信部 App ICP 备案号 / China MIIT ICP Filing**: [京ICP备2026077713号-1A](https://beian.miit.gov.cn/)
 
 ---
 
@@ -96,3 +97,6 @@ If you have any questions regarding privacy or data protection, please contact u
    - **睡眠シアター 4.0（録音ゼロ・完全ローカル処理）**：睡眠中の呼吸リズムおよび音響包絡線（RMS）解析は、端末のメモリ（RAM）内でリアルタイムに計算されるのみで、**音声データの録音・保存・外部送信は一切行いません**。
    - **Bluetooth 心拍計連携 ＆ バックグラウンド再生**：標準 BLE (0x180D) 心拍センサーとの接続、および画面ロック中・バックグラウンドでの 48kHz メトロノーム／睡眠サウンド再生のためにのみ使用されます。
 2. **お問い合わせ**：support@walkfit.app
+
+---
+**合规备案信息 / Regulatory Filing**: [京ICP备2026077713号-1A](https://beian.miit.gov.cn/) | 工信部政务服务平台：https://beian.miit.gov.cn/
