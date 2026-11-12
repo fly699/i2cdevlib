@@ -48,6 +48,10 @@
     margin-bottom: 10px;
   }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 20px; }
+  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 16px; margin-top: 14px; }
+  .shots figure { margin: 0; text-align: center; }
+  .shots img { width: 100%; border-radius: 18px; border: 1px solid var(--border); box-shadow: 0 12px 28px rgba(0,0,0,0.45); display: block; }
+  .shots figcaption { margin-top: 8px; font-size: 12px; color: var(--muted); }
   .warn {
     border-left: 4px solid var(--amber); background: rgba(245, 158, 11, 0.08);
     padding: 14px 16px; border-radius: 10px; margin: 14px 0;
@@ -82,6 +86,28 @@
         <strong>Support Center / 技术支持中心</strong>: <a href="./SUPPORT.html">https://fly699.github.io/i2cdevlib/somnopod/SUPPORT.html</a><br/>
         <strong>Privacy &amp; HealthKit Policy / 隐私政策</strong>: <a href="./PRIVACY_POLICY.html">https://fly699.github.io/i2cdevlib/somnopod/PRIVACY_POLICY.html</a>
       </p>
+    </div>
+
+    <div class="card">
+      <h2>📱 Real iOS App Preview / 真实运行画面</h2>
+      <div class="shots">
+        <figure>
+          <img src="./screenshots/shot_01_cockpit.png" alt="SomnoPod Bio-Acoustic Sleep Cockpit"/>
+          <figcaption>0.1Hz Vagal Orb &amp; 48kHz Chords</figcaption>
+        </figure>
+        <figure>
+          <img src="./screenshots/shot_02_mixer.png" alt="5-Layer DIY Sound Studio"/>
+          <figcaption>5-Layer DIY Sound Studio</figcaption>
+        </figure>
+        <figure>
+          <img src="./screenshots/shot_04_healthkit_ledger.png" alt="Apple HealthKit Sync &amp; Sleep Ledger"/>
+          <figcaption>Apple HealthKit &amp; Sleep Ledger</figcaption>
+        </figure>
+        <figure>
+          <img src="./screenshots/shot_05_elder_mode.png" alt="Senior Large-Text Care Mode"/>
+          <figcaption>关怀大字版 / Senior Easy Mode</figcaption>
+        </figure>
+      </div>
     </div>
 
     <div class="grid">
