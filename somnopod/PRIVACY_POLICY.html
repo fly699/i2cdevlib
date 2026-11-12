@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>SomnoPod (眠舱) Privacy &amp; Apple HealthKit Policy | 隐私政策声明</title>
+  <style>
+  :root {
+    --bg: #060B16;
+    --card: #0F172A;
+    --border: #1E293B;
+    --amber: #F59E0B;
+    --cyan: #38BDF8;
+    --emerald: #10B981;
+    --text: #F8FAFC;
+    --muted: #94A3B8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans", "Segoe UI", Roboto, sans-serif;
+    background: radial-gradient(circle at 50% 0%, #111C38 0%, var(--bg) 60%);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 36px 20px 64px; }
+  nav {
+    display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between;
+    padding: 14px 18px; background: rgba(15, 23, 42, 0.88); border: 1px solid var(--border);
+    border-radius: 16px; margin-bottom: 28px;
+  }
+  .brand { font-weight: 800; font-size: 18px; color: var(--amber); text-decoration: none; }
+  .nav-links { display: flex; flex-wrap: wrap; gap: 16px; }
+  .nav-links a { color: var(--cyan); text-decoration: none; font-weight: 600; font-size: 14px; }
+  .nav-links a:hover { text-decoration: underline; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+    padding: 24px; margin-bottom: 20px;
+  }
+  h1 { font-size: 28px; margin: 0 0 10px; color: var(--text); }
+  h2 { font-size: 20px; margin: 0 0 12px; color: var(--amber); }
+  h3 { font-size: 16px; margin: 16px 0 8px; color: var(--cyan); }
+  p, li { color: #CBD5E1; font-size: 15px; }
+  ul { padding-left: 20px; }
+  .badge {
+    display: inline-block; padding: 4px 10px; border-radius: 999px;
+    background: rgba(245, 158, 11, 0.16); color: var(--amber); font-size: 12px; font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 20px; }
+  .warn {
+    border-left: 4px solid var(--amber); background: rgba(245, 158, 11, 0.08);
+    padding: 14px 16px; border-radius: 10px; margin: 14px 0;
+  }
+  a { color: var(--cyan); }
+  code { background: #1E293B; color: #FDE68A; padding: 2px 6px; border-radius: 6px; font-size: 13px; }
+  footer {
+    margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 13px; text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    
+  <nav>
+    <a class="brand" href="./index.html">🌙 眠舱 SomnoPod</a>
+    <div class="nav-links">
+      <a href="./index.html">首页 / Home</a>
+      <a href="./SUPPORT.html">技术支持 / Support</a>
+      <a href="./PRIVACY_POLICY.html">隐私与 HealthKit 政策 / Privacy</a>
+      <a href="mailto:t58@163.com">联系邮箱: t58@163.com</a>
+    </div>
+  </nav>
+
+    <div class="card">
+      <span class="badge">Last Updated: November 12, 2026 · Zero Cloud Upload · Zero Ad SDKs</span>
+      <h1>SomnoPod (眠舱) Privacy Policy &amp; HealthKit Disclosure</h1>
+      <p>
+        <strong>Applicable App / 适用应用</strong>: SomnoPod: Sleep Sounds &amp; HRV / 眠舱 (<code>com.somnopod.sleep.ios</code>, <code>com.somnopod.sleep.global</code>, <code>com.somnopod.sleep.china</code>)<br/>
+        <strong>Data Controller &amp; Developer / 开发者</strong>: CHUNHONG TANG<br/>
+        <strong>Privacy &amp; Data Protection Contact / 隐私联系邮箱</strong>: <a href="mailto:t58@163.com"><strong>t58@163.com</strong></a>
+      </p>
+      <div class="warn">
+        <strong>Core Privacy Commitment (核心隐私承诺)</strong>: SomnoPod operates on a strict <strong>100% On-Device Local Sandbox</strong> architecture. No account registration is required. We do <strong>NOT</strong> collect, upload, store on external servers, sell, or share your audio, physiological waveforms, HealthKit data, location, or personal identity with any third party, advertising network, or AI training pipeline.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>1. Device Permissions &amp; On-Device Processing (系统权限与本地处理说明)</h2>
+      <p>Every permission below is optional and requested only when you enable the corresponding feature:</p>
+      <ul>
+        <li><strong>Microphone (<code>NSMicrophoneUsageDescription</code> / 麦克风权限)</strong>: Used locally in real time to compute breathing airflow acoustic envelopes (RMS dB) and optionally record up to 8-second snore or sleep-talk highlight clips strictly inside your device's private sandbox. Zero audio is ever uploaded over the network; you can delete any or all clips in one tap inside Tab 04.</li>
+        <li><strong>Motion &amp; Barometer Sensors (<code>NSMotionUsageDescription</code> / 运动与气压传感器)</strong>: Used locally to measure bedside mattress ballistocardiography (BCG micro-vibrations), chest breathing tilt, toss-and-turn actigraphy, and bedroom barometric pressure trends.</li>
+        <li><strong>Front Optical Ambient Illuminance Metering (<code>NSCameraUsageDescription</code> / 环境光照度曝光参数测算)</strong>: Active <strong>only while the Sleep Sanctuary screen is awake</strong> to read optical exposure duration and ISO metadata solely to estimate bedroom ambient light in Lux (helping advise melatonin-friendly darkness). It stops immediately when the screen dims or locks, and <strong>zero photos, pixel frames, or videos are ever captured, rendered, saved, or transmitted</strong>.</li>
+        <li><strong>Bluetooth LE (<code>NSBluetoothAlwaysUsageDescription</code> / 蓝牙心率外设权限)</strong>: Used solely to connect standard Bluetooth LE <code>0x180D</code> heart rate chest straps, armbands, or watches for real-time R-R interval HRV analysis and cardiac-entrained sleep soundscapes.</li>
+        <li><strong>Apple HealthKit (<code>NSHealthShareUsageDescription</code> &amp; <code>NSHealthUpdateUsageDescription</code> / 苹果健康读写权限)</strong>:
+          <ul>
+            <li><strong>Read (读取)</strong>: Heart Rate (<code>HKQuantityTypeIdentifierHeartRate</code>), Resting Heart Rate (<code>HKQuantityTypeIdentifierRestingHeartRate</code>), Heart Rate Variability SDNN (<code>HKQuantityTypeIdentifierHeartRateVariabilitySDNN</code>), and Sleep Analysis (<code>HKCategoryTypeIdentifierSleepAnalysis</code>) to display your personal recovery baseline and drive adaptive sleep soundscapes.</li>
+            <li><strong>Write (写入)</strong>: Completed real Sleep Sanctuary sessions (<code>HKCategoryTypeIdentifierSleepAnalysis</code>) and Mindful Minutes (<code>HKCategoryTypeIdentifierMindfulSession</code>). Built-in demonstration records are strictly blocked from writing to HealthKit.</li>
+            <li><strong>Apple Guideline 5.1.1 &amp; HealthKit Compliance</strong>: HealthKit data is processed exclusively on your device, is <strong>NEVER</strong> uploaded to any external server, and is <strong>NEVER</strong> used for advertising, marketing, user profiling, data brokering, or third-party analytics.</li>
+          </ul>
+        </li>
+        <li><strong>Location While In Use (<code>NSLocationWhenInUseUsageDescription</code> / 使用期间位置权限)</strong>: Used locally while the app is in use solely to align local sunset/sunrise circadian cues and barometric altitude calibration. Coordinates are never uploaded or stored on any server.</li>
+        <li><strong>Photos Add-Only &amp; Media Library (<code>NSPhotoLibraryAddUsageDescription</code> &amp; <code>NSAppleMusicUsageDescription</code> / 相册保存与媒体库混音)</strong>: Photos write-only access is used only when you tap to save a generated sleep report poster to your Photo Library; Media Library access allows optional background music playback control alongside the 48kHz sleep synthesizer.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>2. In-App Purchases, Zero Third-Party Tracking &amp; Data Deletion (内购、零追踪与数据清除)</h2>
+      <ul>
+        <li><strong>Apple StoreKit 2 Billing</strong>: All SomnoPod Pro subscriptions (<code>com.somnopod.pro.monthly</code>, <code>com.somnopod.pro.yearly</code>) and Lifetime Unlock (<code>com.somnopod.pro.lifetime</code>) are processed directly by Apple via StoreKit 2. SomnoPod never accesses or stores your credit card or payment details.</li>
+        <li><strong>Zero Third-Party Ad / Tracking SDKs</strong>: SomnoPod contains zero advertising SDKs, zero cross-app tracking (<code>IDFA</code>), and zero third-party behavioral analytics SDKs.</li>
+        <li><strong>Full User Control &amp; Instant Deletion</strong>: You can delete individual sleep sessions, clear all snore highlight clips, or wipe all local sleep history at any time inside the app, or uninstall the app to permanently erase its entire local sandbox. You may also revoke HealthKit, Microphone, Bluetooth, Camera, or Location permissions anytime in iOS <strong>Settings &rarr; Privacy &amp; Security</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>3. 中文与日本語プライバシー要約 (Chinese &amp; Japanese Summary)</h2>
+      <h3>简体中文摘要</h3>
+      <ul>
+        <li><strong>100% 本机离线沙盒</strong>：眠舱 (SomnoPod) 免注册使用，所有睡眠曲线、心率/HRV 指标与可选 8 秒鼾声高光片段均 100% 存储在您的 iPhone/iPad 本地私有沙盒中，绝不上传云端服务器，亦绝不包含任何第三方广告或追踪 SDK。</li>
+        <li><strong>前置光学测光与 Apple HealthKit 严格合规</strong>：前置光学传感器仅在亮屏期间读取曝光与 ISO 参数换算卧室照度 (Lux)，熄屏即停，<strong>全程绝不拍摄、存储或上传任何图像或视频</strong>；Apple HealthKit 读写的心率、静息心率、HRV (SDNN)、睡眠分析与正念时长仅用于本机健康展示与记录，绝不用于任何广告、营销或数据共享。</li>
+        <li><strong>隐私联络方式</strong>：如有任何隐私或数据问题，请发邮件至 <a href="mailto:t58@163.com"><strong>t58@163.com</strong></a>。</li>
+      </ul>
+      <h3>日本語要約</h3>
+      <ul>
+        <li><strong>100% 端末内ローカル処理</strong>：眠艙 (SomnoPod) はアカウント登録不要で、睡眠波形・心拍/HRVデータ・任意の8秒いびきハイライト録音はすべて端末内のプライベートサンドボックスにのみ保存され、外部サーバーへの送信や広告追跡は一切行いません。</li>
+        <li><strong>光学照度計測および Apple HealthKit 保護</strong>：画面点灯中のみ露出・ISOメタデータから寝室照度(Lux)を算出し、画像・動画の撮影や保存は一切行いません。HealthKitの心拍・HRV・睡眠・マインドフルネスデータは広告や第三者提供には絶対に使用されません。お問い合わせ窓口：<a href="mailto:t58@163.com"><strong>t58@163.com</strong></a>。</li>
+      </ul>
+    </div>
+
+    <footer>
+      Privacy Contact: <a href="mailto:t58@163.com">t58@163.com</a> ·
+      <a href="./index.html">Home</a> ·
+      <a href="./SUPPORT.html">Support Center</a> ·
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Apple Standard EULA</a><br/>
+      © 2026 CHUNHONG TANG · SomnoPod Bio-Acoustic Sleep Lab.
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>SomnoPod (眠舱) Official Support Center | 官方技术支持与帮助中心</title>
+  <style>
+  :root {
+    --bg: #060B16;
+    --card: #0F172A;
+    --border: #1E293B;
+    --amber: #F59E0B;
+    --cyan: #38BDF8;
+    --emerald: #10B981;
+    --text: #F8FAFC;
+    --muted: #94A3B8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans", "Segoe UI", Roboto, sans-serif;
+    background: radial-gradient(circle at 50% 0%, #111C38 0%, var(--bg) 60%);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 36px 20px 64px; }
+  nav {
+    display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between;
+    padding: 14px 18px; background: rgba(15, 23, 42, 0.88); border: 1px solid var(--border);
+    border-radius: 16px; margin-bottom: 28px;
+  }
+  .brand { font-weight: 800; font-size: 18px; color: var(--amber); text-decoration: none; }
+  .nav-links { display: flex; flex-wrap: wrap; gap: 16px; }
+  .nav-links a { color: var(--cyan); text-decoration: none; font-weight: 600; font-size: 14px; }
+  .nav-links a:hover { text-decoration: underline; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+    padding: 24px; margin-bottom: 20px;
+  }
+  h1 { font-size: 28px; margin: 0 0 10px; color: var(--text); }
+  h2 { font-size: 20px; margin: 0 0 12px; color: var(--amber); }
+  h3 { font-size: 16px; margin: 16px 0 8px; color: var(--cyan); }
+  p, li { color: #CBD5E1; font-size: 15px; }
+  ul { padding-left: 20px; }
+  .badge {
+    display: inline-block; padding: 4px 10px; border-radius: 999px;
+    background: rgba(245, 158, 11, 0.16); color: var(--amber); font-size: 12px; font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 20px; }
+  .warn {
+    border-left: 4px solid var(--amber); background: rgba(245, 158, 11, 0.08);
+    padding: 14px 16px; border-radius: 10px; margin: 14px 0;
+  }
+  a { color: var(--cyan); }
+  code { background: #1E293B; color: #FDE68A; padding: 2px 6px; border-radius: 6px; font-size: 13px; }
+  footer {
+    margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 13px; text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    
+  <nav>
+    <a class="brand" href="./index.html">🌙 眠舱 SomnoPod</a>
+    <div class="nav-links">
+      <a href="./index.html">首页 / Home</a>
+      <a href="./SUPPORT.html">技术支持 / Support</a>
+      <a href="./PRIVACY_POLICY.html">隐私与 HealthKit 政策 / Privacy</a>
+      <a href="mailto:t58@163.com">联系邮箱: t58@163.com</a>
+    </div>
+  </nav>
+
+    <div class="card">
+      <span class="badge">24-Hour Customer Support · English / 简体中文 / 繁體中文 / 日本語</span>
+      <h1>SomnoPod (眠舱) Official Support Center | 官方技术支持中心</h1>
+      <p>
+        <strong>Applicable App / 适用应用</strong>: SomnoPod: Sleep Sounds &amp; HRV / 眠舱 (<code>com.somnopod.sleep.ios</code>, App ID <code>6832799210</code>)<br/>
+        <strong>Developer / 开发者</strong>: CHUNHONG TANG<br/>
+        <strong>Official Support Email / 官方客服与技术支持邮箱</strong>: <a href="mailto:t58@163.com"><strong>t58@163.com</strong></a> (Response within 24 hours / 24 小时内人工回复)
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>1. Quick Start &amp; Core Features Guide (核心功能指南)</h2>
+      <h3>A. 48kHz Sleep Soundscapes &amp; Lock-Screen Background Audio (后台锁屏助眠播放)</h3>
+      <ul>
+        <li>Tap the main <strong>Start Sleep</strong> button to launch real-time 48kHz chords, binaural beats, and natural white noise with customizable sleep fade-out timers.</li>
+        <li><strong>Persistent Background Playback</strong>: Audio continues seamlessly when you lock your iPhone/iPad screen or return to the Home Screen, with full Play/Pause controls on the iOS Lock Screen and Control Center.</li>
+      </ul>
+
+      <h3>B. Apple Health (HealthKit) &amp; Bluetooth LE 0x180D Heart Rate Sync (苹果健康与蓝牙心率同步)</h3>
+      <ul>
+        <li><strong>Where to Find Apple HealthKit in App</strong>: Open <strong>Tab 03 (Sensor Guard / 传感守护)</strong>, <strong>Tab 04 (Sleep Archive / 睡眠账本)</strong>, or tap the top-right <strong>⋯ Control Center</strong> button to access the dedicated <strong>Apple Health (HealthKit) Sleep &amp; HRV Sync</strong> card.</li>
+        <li><strong>Read &amp; Write Types</strong>: With your permission, SomnoPod reads Heart Rate, Resting Heart Rate, Heart Rate Variability (SDNN), and Sleep Analysis from Apple Health, and writes completed real Sleep Sanctuary sessions (<code>SleepAnalysis</code>) and Mindful Minutes (<code>MindfulSession</code>) to Apple Health. Built-in demo records are never written to HealthKit.</li>
+        <li><strong>Bluetooth LE 0x180D</strong>: Tap the Bluetooth HR radar button to pair standard BLE <code>0x180D</code> chest straps or smartwatches broadcasting live heart rate.</li>
+      </ul>
+
+      <h3>C. Bedside 5-Sensor Sleep Tracking &amp; Local Snore Sandbox (五源无感监测与本地鼾声沙盒)</h3>
+      <ul>
+        <li>Place your iPhone plugged into power 15–25 cm from your pillow on the mattress (or select <strong>HR-Only</strong> / <strong>Pure Audio L0</strong> mode if placed on a nightstand).</li>
+        <li>Optional 8-second snore/sleep-talk highlight clips and all sleep waveforms are stored <strong>100% locally inside your device's private sandbox</strong> with zero cloud upload, and can be deleted with one tap at any time.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>2. SomnoPod Pro Subscriptions, Lifetime Unlock &amp; Restore Purchases (会员订阅与恢复购买)</h2>
+      <ul>
+        <li><strong>SomnoPod Pro Plans</strong>:
+          <ul>
+            <li>Monthly Auto-Renewable Subscription (<code>com.somnopod.pro.monthly</code>)</li>
+            <li>Yearly Auto-Renewable Subscription (<code>com.somnopod.pro.yearly</code>)</li>
+            <li>Lifetime Pro Non-Consumable Unlock (<code>com.somnopod.pro.lifetime</code> — one-time purchase, permanent access)</li>
+          </ul>
+        </li>
+        <li><strong>How to Restore Purchases (如何恢复已购项目)</strong>: After reinstalling or switching devices, open the <strong>SomnoPod Pro</strong> sheet inside the app and tap <strong>Restore Purchases (恢复已购项目)</strong> to restore active subscriptions or Lifetime Pro via your Apple ID at zero charge.</li>
+        <li><strong>How to Manage or Cancel Subscriptions (管理或取消自动续订)</strong>: Open iOS <strong>Settings (设置) &rarr; [Your Name / Apple ID] &rarr; Subscriptions (订阅) &rarr; SomnoPod (眠舱)</strong> at least 24 hours before the end of the current billing period.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>3. Medical Disclaimer &amp; Direct Contact (非医疗声明与联系方式)</h2>
+      <div class="warn">
+        <p><strong>Wellness Disclaimer (Apple Guideline 1.4.1)</strong>: SomnoPod is for general sleep relaxation, ambient soundscapes, mindfulness breathing, and personal wellness tracking only. It is NOT a medical device and does not provide medical diagnosis or treatment for sleep apnea (OSA) or cardiac conditions. Peer-reviewed scientific citations (NIH PubMed PMID/DOI) can be viewed anytime inside the app's Literature Citations sheet.</p>
+      </div>
+      <ul>
+        <li><strong>Customer Support Email / 客服邮箱</strong>: <a href="mailto:t58@163.com">t58@163.com</a></li>
+        <li><strong>Official Product Page / 官方主页</strong>: <a href="./index.html">https://fly699.github.io/i2cdevlib/somnopod/</a></li>
+        <li><strong>Privacy &amp; HealthKit Policy / 隐私政策</strong>: <a href="./PRIVACY_POLICY.html">https://fly699.github.io/i2cdevlib/somnopod/PRIVACY_POLICY.html</a></li>
+        <li><strong>Terms of Use (Apple Standard EULA)</strong>: <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">https://www.apple.com/legal/internet-services/itunes/dev/stdeula/</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>4. 日本語サポート窓口 (Japanese Support Summary)</h2>
+      <ul>
+        <li><strong>バックグラウンド再生＆Appleヘルスケア連携</strong>：画面ロック中も48kHz睡眠サウンドが途切れず再生されます。「03 センサー見守り」または「04 睡眠台帳」内の「Apple Health (HealthKit)」カードから、心拍数・安静時心拍・HRV(SDNN)・睡眠データの読込および実際の睡眠時間・マインドフルネス時間の書込を行えます（デモ記録は書き込まれません）。</li>
+        <li><strong>購入の復元・解約・お問い合わせ</strong>：Pro画面の「購入を復元」からいつでも復元可能です。ご質問・サポートは公式メール窓口 <a href="mailto:t58@163.com"><strong>t58@163.com</strong></a> までお気軽にお問い合わせください（原則24時間以内に返信いたします）。</li>
+      </ul>
+    </div>
+
+    <footer>
+      Support Contact: <a href="mailto:t58@163.com">t58@163.com</a> ·
+      <a href="./index.html">Home</a> ·
+      <a href="./PRIVACY_POLICY.html">Privacy Policy</a> ·
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">EULA</a><br/>
+      © 2026 CHUNHONG TANG · SomnoPod Bio-Acoustic Sleep Lab.
+    </footer>
+  </div>
+</body>
+</html>

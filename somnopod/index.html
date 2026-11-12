@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>SomnoPod (眠舱) — Bio-Acoustic Sleep Sounds, Bedside Sensor Guard &amp; HRV Recovery</title>
+  <style>
+  :root {
+    --bg: #060B16;
+    --card: #0F172A;
+    --border: #1E293B;
+    --amber: #F59E0B;
+    --cyan: #38BDF8;
+    --emerald: #10B981;
+    --text: #F8FAFC;
+    --muted: #94A3B8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans", "Segoe UI", Roboto, sans-serif;
+    background: radial-gradient(circle at 50% 0%, #111C38 0%, var(--bg) 60%);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 36px 20px 64px; }
+  nav {
+    display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between;
+    padding: 14px 18px; background: rgba(15, 23, 42, 0.88); border: 1px solid var(--border);
+    border-radius: 16px; margin-bottom: 28px;
+  }
+  .brand { font-weight: 800; font-size: 18px; color: var(--amber); text-decoration: none; }
+  .nav-links { display: flex; flex-wrap: wrap; gap: 16px; }
+  .nav-links a { color: var(--cyan); text-decoration: none; font-weight: 600; font-size: 14px; }
+  .nav-links a:hover { text-decoration: underline; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+    padding: 24px; margin-bottom: 20px;
+  }
+  h1 { font-size: 28px; margin: 0 0 10px; color: var(--text); }
+  h2 { font-size: 20px; margin: 0 0 12px; color: var(--amber); }
+  h3 { font-size: 16px; margin: 16px 0 8px; color: var(--cyan); }
+  p, li { color: #CBD5E1; font-size: 15px; }
+  ul { padding-left: 20px; }
+  .badge {
+    display: inline-block; padding: 4px 10px; border-radius: 999px;
+    background: rgba(245, 158, 11, 0.16); color: var(--amber); font-size: 12px; font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 20px; }
+  .warn {
+    border-left: 4px solid var(--amber); background: rgba(245, 158, 11, 0.08);
+    padding: 14px 16px; border-radius: 10px; margin: 14px 0;
+  }
+  a { color: var(--cyan); }
+  code { background: #1E293B; color: #FDE68A; padding: 2px 6px; border-radius: 6px; font-size: 13px; }
+  footer {
+    margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 13px; text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    
+  <nav>
+    <a class="brand" href="./index.html">🌙 眠舱 SomnoPod</a>
+    <div class="nav-links">
+      <a href="./index.html">首页 / Home</a>
+      <a href="./SUPPORT.html">技术支持 / Support</a>
+      <a href="./PRIVACY_POLICY.html">隐私与 HealthKit 政策 / Privacy</a>
+      <a href="mailto:t58@163.com">联系邮箱: t58@163.com</a>
+    </div>
+  </nav>
+
+    <div class="card">
+      <span class="badge">iOS &amp; iPadOS · 48kHz Real-Time DSP · 100% On-Device Privacy</span>
+      <h1>SomnoPod (眠舱) — Bio-Acoustic Sleep Sanctuary &amp; HRV Recovery</h1>
+      <p><strong>SomnoPod (眠舱 · 眠艙)</strong> combines a zero-loop 48kHz pure-intonation neural chord &amp; nature soundscape synthesizer, contact-free bedside multi-sensor sleep tracking, Apple Health (<code>HealthKit</code>) &amp; Bluetooth LE (<code>0x180D</code>) live heart-rate entrainment, and a dedicated Extra-Large Senior Mode — engineered with 100% offline local sandbox privacy.</p>
+      <p>
+        <strong>Official Support Email / 官方客服邮箱</strong>: <a href="mailto:t58@163.com">t58@163.com</a><br/>
+        <strong>Support Center / 技术支持中心</strong>: <a href="./SUPPORT.html">https://fly699.github.io/i2cdevlib/somnopod/SUPPORT.html</a><br/>
+        <strong>Privacy &amp; HealthKit Policy / 隐私政策</strong>: <a href="./PRIVACY_POLICY.html">https://fly699.github.io/i2cdevlib/somnopod/PRIVACY_POLICY.html</a>
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>🎹 48kHz Neural Soundscapes</h2>
+        <p>10 just-intonation master ambient chords, 8 procedural nature soundscapes (rain, ocean tide, campfire, pink/brown noise, 0.85Hz closed-loop slow-wave micro-puffs), and binaural beats with persistent Lock Screen &amp; Control Center background playback.</p>
+      </div>
+      <div class="card">
+        <h2>📡 5-Sensor Bedside Fusion</h2>
+        <p>Contact-free pillow BCG &amp; chest tilt respiration sensing, acoustic snore/sleep-talk local highlight sandbox, ambient bedroom Lux &amp; barometric pressure tracking, and smart light-sleep phase wake alarm.</p>
+      </div>
+      <div class="card">
+        <h2>❤️ Apple Health &amp; BLE 0x180D</h2>
+        <p>Direct integration with <strong>Apple HealthKit</strong> (Heart Rate, Resting HR, HRV SDNN, Sleep Analysis &amp; Mindful Minutes) and standard Bluetooth LE <code>0x180D</code> heart rate straps &amp; watches.</p>
+      </div>
+      <div class="card">
+        <h2>🌿 Senior Large-Text Mode</h2>
+        <p>One-tap switch between the Pro Holographic Sleep Cockpit and an accessible 46pt Extra-Large Senior Mode featuring plain-language sleep summaries and one-tap spoken morning reports.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>⚕️ Non-Medical Wellness Disclaimer (Guideline 1.4.1)</h2>
+      <div class="warn">
+        <p><strong>SomnoPod (眠舱)</strong> is intended solely for general sleep relaxation, white-noise soundscapes, breathing mindfulness, and personal wellness self-tracking. It is <strong>not a medical device</strong> and is not intended to diagnose, treat, cure, or prevent Obstructive Sleep Apnea (OSA), arrhythmia, insomnia, or any medical condition. Always consult a qualified physician for medical advice.</p>
+        <p><strong>非医疗器械声明</strong>：眠舱 (SomnoPod) 仅用于日常睡眠放松、环境白噪音助眠、正念呼吸引导与个人健康自我记录，<strong>不属于医疗器械</strong>，不提供任何临床诊断或治疗建议。如有打呼憋气、胸闷或持续失眠症状，请及时就医。</p>
+      </div>
+    </div>
+
+    <footer>
+      Official Contact &amp; Support: <a href="mailto:t58@163.com">t58@163.com</a> ·
+      <a href="./SUPPORT.html">Support</a> ·
+      <a href="./PRIVACY_POLICY.html">Privacy Policy</a> ·
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Terms of Use (Apple Standard EULA)</a><br/>
+      © 2026 CHUNHONG TANG · SomnoPod Bio-Acoustic Sleep Lab. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>
