@@ -47,6 +47,18 @@
     background: rgba(245, 158, 11, 0.16); color: var(--amber); font-size: 12px; font-weight: 700;
     margin-bottom: 10px;
   }
+  .btn-group {
+    display: flex; flex-wrap: wrap; gap: 14px; margin: 22px 0 18px;
+  }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 14px 24px; border-radius: 14px; font-size: 15px; font-weight: 700;
+    text-decoration: none !important; transition: transform 0.15s ease, opacity 0.15s ease;
+    min-width: 250px;
+  }
+  .btn:hover { transform: translateY(-2px); opacity: 0.95; }
+  .btn-ios { background: #FFFFFF; color: #060B16 !important; }
+  .btn-android { background: var(--amber); color: #060B16 !important; }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 20px; }
   .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 16px; margin-top: 14px; }
   .shots figure { margin: 0; text-align: center; }
@@ -78,9 +90,17 @@
   </nav>
 
     <div class="card">
-      <span class="badge">iOS &amp; iPadOS · 48kHz Real-Time DSP · 100% On-Device Privacy</span>
+      <span class="badge">iOS &amp; Android · 48kHz Real-Time DSP · 100% On-Device Privacy</span>
       <h1>SomnoPod (眠舱) — Bio-Acoustic Sleep Sanctuary &amp; HRV Recovery</h1>
       <p><strong>SomnoPod (眠舱 · 眠艙)</strong> combines a zero-loop 48kHz pure-intonation neural chord &amp; nature soundscape synthesizer, contact-free bedside multi-sensor sleep tracking, Apple Health (<code>HealthKit</code>) &amp; Bluetooth LE (<code>0x180D</code>) live heart-rate entrainment, and a dedicated Extra-Large Senior Mode — engineered with 100% offline local sandbox privacy.</p>
+      <div class="btn-group">
+        <a class="btn btn-ios" href="https://apps.apple.com/app/id6832799210" target="_blank" rel="noopener">
+          🍎 App Store 免费下载 (iOS / iPadOS)
+        </a>
+        <a class="btn btn-android" href="./SomnoPod-China-Free-v1.0.0.apk" download>
+          🤖 安卓官方免费版下载 (v1.0.0 APK)
+        </a>
+      </div>
       <p>
         <strong>Official Support Email / 官方客服邮箱</strong>: <a href="mailto:t58@163.com">t58@163.com</a><br/>
         <strong>Support Center / 技术支持中心</strong>: <a href="./SUPPORT.html">https://fly699.github.io/i2cdevlib/somnopod/SUPPORT.html</a><br/>
