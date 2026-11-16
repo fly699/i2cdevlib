@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>EarCast Pro - Privacy Policy</title>
-<style>body{background:#090D16;color:#E2E8F0;font-family:-apple-system,Segoe UI,sans-serif;max-width:820px;margin:40px auto;padding:24px;line-height:1.7;}h1,h2{color:#F59E0B;}a{color:#38BDF8;}.card{background:#111827;border:1px solid #1F2937;border-radius:14px;padding:22px;margin:18px 0;}</style>
+<title>EarCast Pro — Privacy Policy (隐私政策)</title>
+<style>body{background:#090D16;color:#E2E8F0;font-family:-apple-system,Segoe UI,sans-serif;max-width:860px;margin:36px auto;padding:24px;line-height:1.72;}h1,h2{color:#F59E0B;margin-bottom:8px;}a{color:#38BDF8;}.card{background:#111827;border:1px solid #1F2937;border-radius:14px;padding:22px;margin:18px 0;}ul{padding-left:22px;}</style>
 </head><body>
 <h1>EarCast Pro Privacy Policy (隐私政策)</h1>
-<p>Last Updated: November 16, 2026</p>
+<p><strong>Effective &amp; Last Updated:</strong> November 17, 2026 &nbsp;|&nbsp; <strong>Developer:</strong> Resilient Shield (坚韧护盾)</p>
+
 <div class="card">
-<h2>100% On-Device Offline Processing · Zero Cloud Upload</h2>
-<p><strong>EarCast Pro</strong> processes all microphone audio, Bluetooth routing, 6-axis IMU / pedometer / barometer sensor fusion, and V2 SHA-256 cryptographic forensic recordings <strong>100% locally on your device</strong>. We do NOT collect, transmit, upload, store, or share any audio recordings, voice data, sensor data, or personal identifiers on external servers.</p>
-<p>【耳界 EarCast Pro】采用 100% 本机离线沙盒架构：所有麦克风拾音、真无线单耳隔离处理、传感器防误报融合及 V2 链式 SHA-256 防篡改录音均完全保存在您的手机本地，绝不联网上传任何音频或个人隐私数据。</p>
+<h2>1. Zero Data Collection &amp; 100% On-Device Processing</h2>
+<p><strong>EarCast Pro</strong> (<code>com.earcast.pro</code>) is architected as a strictly offline, local-first acoustic and audio recording application. We do <strong>NOT</strong> collect, transmit, upload, sell, rent, or store any personal data, voice recordings, microphone streams, Bluetooth identifiers, sensor telemetry, analytics, or advertising identifiers (IDFA) on any external server.</p>
+<p>【耳界 EarCast Pro】采用严格的 100% 本机离线沙盒架构：我们<strong>不设任何云端服务器，不要求注册账号，绝不收集、上传、共享或出售</strong>您的任何录音音频、麦克风流、蓝牙外设信息、运动/气压传感器数据或个人身份信息。</p>
 </div>
+
 <div class="card">
-<h2>Permissions Used Locally</h2>
+<h2>2. Device Permissions &amp; Strictly Local Purpose</h2>
 <ul>
-<li><strong>Microphone</strong>: Real-time personal sound amplification, single-ear remote pickup, and user-initiated local recording.</li>
-<li><strong>Bluetooth</strong>: Connecting wireless earbuds/headsets for stereo channel isolation and dual-headset routing.</li>
-<li><strong>Motion &amp; Barometer</strong>: Local detection of remote mic movement and suppression of walking/door-slam false alerts.</li>
-<li><strong>StoreKit / Billing</strong>: Handled natively by Apple App Store / Google Play for optional PRO unlocks.</li>
+<li><strong>Microphone (麦克风权限)</strong>: Used solely in real time on your device for personal speech amplification, single-earbud remote pickup routing, 6-band parametric EQ, and user-initiated local audio recording (WAV/M4A/AAC). The optional 30-second Pre-Roll buffer is OFF by default and resides purely in volatile RAM until you explicitly tap Record.</li>
+<li><strong>Bluetooth (蓝牙权限)</strong>: Used locally to enumerate and route audio between connected wireless earbuds/headsets (Single-Ear Isolation and Dual-Headset Split TX/RX).</li>
+<li><strong>Motion, Fitness &amp; Barometer Sensors (运动与气压传感器权限)</strong>: Processed exclusively in local RAM to detect physical movement of a remote pickup earbud while filtering out walking footsteps and door-closure air-pressure transients. Zero sensor data ever leaves your device.</li>
+<li><strong>Notifications (本地通知权限)</strong>: Used locally to display active background audio monitoring or recording status so you always have transparent visibility.</li>
 </ul>
 </div>
-<p>Contact &amp; Support: <a href="mailto:fly699@gmail.com">fly699@gmail.com</a> | <a href="./index.html">Interactive Feature Showcase</a></p>
+
+<div class="card">
+<h2>3. Local Storage, User Control &amp; Data Deletion</h2>
+<p>All recordings and their companion V2 SHA-256 integrity verification files (<code>.bookmarks.json</code>) are stored exclusively inside your device's local application sandbox (accessible via the in-app Recording Vault and the iOS Files app under <em>On My iPhone / EarCast Pro</em>). Deleting a recording in the app or uninstalling EarCast Pro permanently and irreversibly erases those files from your device.</p>
+</div>
+
+<div class="card">
+<h2>4. In-App Purchases &amp; Subscriptions</h2>
+<p>Optional PRO unlocks (Annual Subscription with 3-Day Free Trial, Monthly Subscription, and Lifetime One-Time Purchase) are processed directly and securely by Apple StoreKit 2 / Google Play Billing. Resilient Shield never receives or stores your credit card or payment credentials.</p>
+</div>
+
+<div class="card">
+<h2>5. Children's Privacy &amp; Contact Us</h2>
+<p>Because EarCast Pro collects zero personal information from users of any age, no personal data from children under 13 (or applicable GDPR/CCPA age thresholds) is ever gathered. For any privacy questions, contact us at: <a href="mailto:t58@163.com">t58@163.com</a>.</p>
+</div>
+
+<p><a href="./index.html">← Official Website</a> &nbsp;|&nbsp; <a href="./TERMS_OF_USE.html">Terms of Use (EULA)</a> &nbsp;|&nbsp; <a href="./SUPPORT.html">Support</a></p>
 </body></html>
