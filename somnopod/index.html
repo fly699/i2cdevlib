@@ -1,170 +1,275 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>SomnoPod (眠舱) — Bio-Acoustic Sleep Sounds, Bedside Sensor Guard &amp; HRV Recovery</title>
+  <title>SomnoPod (眠舱) — Sleep Tracker, 432Hz White Noise, Snore &amp; HRV Monitor</title>
+  <meta name="description" content="Contact-free pillow sleep tracker, snore &amp; breathing monitor, BLE/Apple Watch HRV, smart light-sleep alarm &amp; 48kHz 432Hz rain sleep sounds. 15 languages, 100% offline privacy."/>
   <style>
   :root {
-    --bg: #060B16;
-    --card: #0F172A;
-    --border: #1E293B;
-    --amber: #F59E0B;
-    --cyan: #38BDF8;
-    --emerald: #10B981;
-    --text: #F8FAFC;
-    --muted: #94A3B8;
+    --bg: #060B16; --card: #0F172A; --border: #1E293B;
+    --amber: #F59E0B; --cyan: #38BDF8; --emerald: #10B981;
+    --text: #F8FAFC; --muted: #94A3B8;
   }
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans", "Segoe UI", Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans", "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
     background: radial-gradient(circle at 50% 0%, #111C38 0%, var(--bg) 60%);
-    color: var(--text);
-    line-height: 1.7;
+    color: var(--text); line-height: 1.7;
   }
-  .wrap { max-width: 920px; margin: 0 auto; padding: 36px 20px 64px; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 28px 18px 64px; }
   nav {
-    display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between;
-    padding: 14px 18px; background: rgba(15, 23, 42, 0.88); border: 1px solid var(--border);
-    border-radius: 16px; margin-bottom: 28px;
+    display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between;
+    padding: 13px 18px; background: rgba(15, 23, 42, 0.92); border: 1px solid var(--border);
+    border-radius: 16px; margin-bottom: 24px;
   }
   .brand { font-weight: 800; font-size: 18px; color: var(--amber); text-decoration: none; }
-  .nav-links { display: flex; flex-wrap: wrap; gap: 16px; }
-  .nav-links a { color: var(--cyan); text-decoration: none; font-weight: 600; font-size: 14px; }
-  .nav-links a:hover { text-decoration: underline; }
+  .nav-links { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .nav-links a { color: var(--cyan); text-decoration: none; font-weight: 600; font-size: 13.5px; }
+  .lang-sel {
+    background: #172554; color: #F8FAFC; border: 1px solid var(--cyan);
+    border-radius: 9px; padding: 5px 10px; font-size: 13px; font-weight: 700; cursor: pointer;
+  }
   .card {
     background: var(--card); border: 1px solid var(--border); border-radius: 18px;
     padding: 24px; margin-bottom: 20px;
   }
-  h1 { font-size: 28px; margin: 0 0 10px; color: var(--text); }
+  .monitor-highlight {
+    background: linear-gradient(135deg, #092222 0%, #0F172A 100%);
+    border: 1.5px solid var(--emerald);
+  }
+  h1 { font-size: 28px; margin: 0 0 10px; color: var(--text); line-height: 1.3; }
   h2 { font-size: 20px; margin: 0 0 12px; color: var(--amber); }
-  h3 { font-size: 16px; margin: 16px 0 8px; color: var(--cyan); }
   p, li { color: #CBD5E1; font-size: 15px; }
-  ul { padding-left: 20px; }
   .badge {
-    display: inline-block; padding: 4px 10px; border-radius: 999px;
-    background: rgba(245, 158, 11, 0.16); color: var(--amber); font-size: 12px; font-weight: 700;
-    margin-bottom: 10px;
+    display: inline-block; padding: 4px 11px; border-radius: 999px;
+    background: rgba(16, 185, 129, 0.16); color: #34D399; font-size: 12px; font-weight: 700;
+    margin-bottom: 10px; border: 1px solid rgba(16, 185, 129, 0.4);
   }
-  .btn-group {
-    display: flex; flex-wrap: wrap; gap: 14px; margin: 22px 0 18px;
-  }
+  .btn-group { display: flex; flex-wrap: wrap; gap: 14px; margin: 22px 0 14px; }
   .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-    padding: 14px 24px; border-radius: 14px; font-size: 15px; font-weight: 700;
-    text-decoration: none !important; transition: transform 0.15s ease, opacity 0.15s ease;
-    min-width: 250px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 24px; border-radius: 14px; font-size: 15px; font-weight: 800;
+    text-decoration: none !important; min-width: 255px;
   }
-  .btn:hover { transform: translateY(-2px); opacity: 0.95; }
   .btn-ios { background: #FFFFFF; color: #060B16 !important; }
   .btn-android { background: var(--amber); color: #060B16 !important; }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 20px; }
   .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 16px; margin-top: 14px; }
   .shots figure { margin: 0; text-align: center; }
-  .shots img { width: 100%; border-radius: 18px; border: 1px solid var(--border); box-shadow: 0 12px 28px rgba(0,0,0,0.45); display: block; }
+  .shots img, .shots video { width: 100%; border-radius: 18px; border: 1px solid var(--border); box-shadow: 0 12px 28px rgba(0,0,0,0.45); display: block; }
   .shots figcaption { margin-top: 8px; font-size: 12px; color: var(--muted); }
-  .warn {
-    border-left: 4px solid var(--amber); background: rgba(245, 158, 11, 0.08);
-    padding: 14px 16px; border-radius: 10px; margin: 14px 0;
-  }
+  .warn { border-left: 4px solid var(--amber); background: rgba(245, 158, 11, 0.08); padding: 14px 16px; border-radius: 10px; margin: 14px 0; }
   a { color: var(--cyan); }
-  code { background: #1E293B; color: #FDE68A; padding: 2px 6px; border-radius: 6px; font-size: 13px; }
-  footer {
-    margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border);
-    color: var(--muted); font-size: 13px; text-align: center;
-  }
-</style>
+  footer { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; text-align: center; }
+  </style>
 </head>
 <body>
   <div class="wrap">
-    
-  <nav>
-    <a class="brand" href="./index.html">🌙 眠舱 SomnoPod</a>
-    <div class="nav-links">
-      <a href="./index.html">首页 / Home</a>
-      <a href="./SUPPORT.html">技术支持 / Support</a>
-      <a href="./PRIVACY_POLICY.html">隐私与 HealthKit 政策 / Privacy</a>
-      <a href="mailto:t58@163.com">联系邮箱: t58@163.com</a>
-    </div>
-  </nav>
+    <nav>
+      <a class="brand" href="./index.html">🌙 眠舱 SomnoPod v1.1</a>
+      <div class="nav-links">
+        <a href="./SUPPORT.html">Support / 技术支持</a>
+        <a href="./PRIVACY_POLICY.html">Privacy / 隐私政策</a>
+        <select id="langSelect" class="lang-sel" aria-label="Language">
+          <option value="zh">简体中文</option>
+          <option value="hant">繁體中文</option>
+          <option value="en">English</option>
+          <option value="ja">日本語</option>
+          <option value="ko">한국어</option>
+          <option value="es">Español</option>
+          <option value="de">Deutsch</option>
+        </select>
+      </div>
+    </nav>
 
-    <div class="card">
-      <span class="badge">iOS &amp; Android · 48kHz Real-Time DSP · 100% On-Device Privacy</span>
-      <h1>SomnoPod (眠舱) — Bio-Acoustic Sleep Sanctuary &amp; HRV Recovery</h1>
-      <p><strong>SomnoPod (眠舱 · 眠艙)</strong> combines a zero-loop 48kHz pure-intonation neural chord &amp; nature soundscape synthesizer, contact-free bedside multi-sensor sleep tracking, Apple Health (<code>HealthKit</code>) &amp; Bluetooth LE (<code>0x180D</code>) live heart-rate entrainment, and a dedicated Extra-Large Senior Mode — engineered with 100% offline local sandbox privacy.</p>
+    <div class="card monitor-highlight">
+      <span class="badge" id="t_badge">🌍 全球 15 国语言支持 · 免注册零广告 · 100% 本机离线隐私</span>
+      <h1 id="t_h1">眠舱 SomnoPod — 枕边无感睡眠监测 &amp; 432Hz 脑波白噪音助眠</h1>
+      <p id="t_lead">无需穿戴手表、无需注册登录：把手机放在枕边，自动完成整夜<strong>深浅睡眠分期、呼吸节律、鼾声/梦话本地捕捉与蓝牙/Apple Watch 心率 HRV 监测</strong>，同时流淌出 48kHz 实时合成的 432Hz 温暖纯律和弦与森林夜雨，并在清晨浅睡窗口温柔唤醒。</p>
       <div class="btn-group">
-        <a class="btn btn-ios" href="https://apps.apple.com/app/id6832799210" target="_blank" rel="noopener">
-          🍎 App Store 免费下载 (iOS / iPadOS)
+        <a class="btn btn-ios" id="t_btn_ios" href="https://apps.apple.com/app/id6832799210" target="_blank" rel="noopener">
+          🍎 App Store 下载 (iOS / iPadOS)
         </a>
-        <a class="btn btn-android" href="./SomnoPod-China-Free-v1.0.0.apk" download>
-          🤖 安卓官方免费版下载 (v1.0.0 Free APK)
+        <a class="btn btn-android" id="t_btn_and" href="./SomnoPod-China-Free-v1.0.0.apk" download>
+          🤖 安卓官网免费版下载 (v1.1.0 APK)
         </a>
-        
       </div>
-      <p>
-        <strong>Official Support Email / 官方客服邮箱</strong>: <a href="mailto:t58@163.com">t58@163.com</a><br/>
-        <strong>Support Center / 技术支持中心</strong>: <a href="./SUPPORT.html">https://fly699.github.io/i2cdevlib/somnopod/SUPPORT.html</a><br/>
-        <strong>Privacy &amp; HealthKit Policy / 隐私政策</strong>: <a href="./PRIVACY_POLICY.html">https://fly699.github.io/i2cdevlib/somnopod/PRIVACY_POLICY.html</a>
+      <p style="font-size:13.5px;color:#94A3B8;margin:4px 0 0;">
+        Official Contact / 官方支持邮箱: <a href="mailto:t58@163.com">t58@163.com</a>
       </p>
-    </div>
-
-    <div class="card">
-      <h2>📱 Real iOS App Preview / 真实运行画面</h2>
-      <div class="shots">
-        <figure>
-          <img src="./screenshots/shot_01_cockpit.png" alt="SomnoPod Bio-Acoustic Sleep Cockpit"/>
-          <figcaption>0.1Hz Vagal Orb &amp; 48kHz Chords</figcaption>
-        </figure>
-        <figure>
-          <img src="./screenshots/shot_02_mixer.png" alt="5-Layer DIY Sound Studio"/>
-          <figcaption>5-Layer DIY Sound Studio</figcaption>
-        </figure>
-        <figure>
-          <img src="./screenshots/shot_04_healthkit_ledger.png" alt="Apple HealthKit Sync &amp; Sleep Ledger"/>
-          <figcaption>Apple HealthKit &amp; Sleep Ledger</figcaption>
-        </figure>
-        <figure>
-          <img src="./screenshots/shot_05_elder_mode.png" alt="Senior Large-Text Care Mode"/>
-          <figcaption>关怀大字版 / Senior Easy Mode</figcaption>
-        </figure>
-      </div>
     </div>
 
     <div class="grid">
       <div class="card">
-        <h2>🎹 48kHz Neural Soundscapes</h2>
-        <p>10 just-intonation master ambient chords, 8 procedural nature soundscapes (rain, ocean tide, campfire, pink/brown noise, 0.85Hz closed-loop slow-wave micro-puffs), and binaural beats with persistent Lock Screen &amp; Control Center background playback.</p>
+        <h2 id="t_f1_t">🫁 一目了然的整夜睡眠监测</h2>
+        <p id="t_f1_d">免穿戴枕边监测入睡潜伏期、深睡与浅睡比例、翻身体动与呼吸频率；本地智能记录打鼾与梦话高光片段，清晨即看完整睡眠质量评分。</p>
       </div>
       <div class="card">
-        <h2>📡 5-Sensor Bedside Fusion</h2>
-        <p>Contact-free pillow BCG &amp; chest tilt respiration sensing, acoustic snore/sleep-talk local highlight sandbox, ambient bedroom Lux &amp; barometric pressure tracking, and smart light-sleep phase wake alarm.</p>
+        <h2 id="t_f2_t">🎵 48kHz 实时 432Hz 暖弦与夜雨</h2>
+        <p id="t_f2_d">告别单调 MP3 循环：内置 10 款纯律大师和弦、8 款自然白噪音（深林夜雨、深海潮汐、壁炉暖火、粉红/布朗噪音）、4-7-8 减压呼吸与 20 分钟午睡。</p>
       </div>
       <div class="card">
-        <h2>❤️ Apple Health &amp; BLE 0x180D</h2>
-        <p>Direct integration with <strong>Apple HealthKit</strong> (Heart Rate, Resting HR, HRV SDNN, Sleep Analysis &amp; Mindful Minutes) and standard Bluetooth LE <code>0x180D</code> heart rate straps &amp; watches.</p>
+        <h2 id="t_f3_t">⌚ Apple Watch &amp; 华为/蓝牙心率 HRV</h2>
+        <p id="t_f3_d">无缝同步 Apple HealthKit 并原生支持华为、佳明、心率带等标准 BLE 0x180D 实时心率广播，追踪整夜最低心率与迷走神经 HRV 恢复力。</p>
       </div>
       <div class="card">
-        <h2>🌿 Senior Large-Text Mode</h2>
-        <p>One-tap switch between the Pro Holographic Sleep Cockpit and an accessible 46pt Extra-Large Senior Mode featuring plain-language sleep summaries and one-tap spoken morning reports.</p>
+        <h2 id="t_f4_t">⏰ 浅睡无痛唤醒 &amp; 长辈大字版</h2>
+        <p id="t_f4_d">在设定的起床窗口内识别浅睡时机，以森林晨鸟与破晓风铃渐强唤醒；内置 46 号超大字关怀模式与语音播报，摘下眼镜也能轻松操作。</p>
       </div>
     </div>
 
     <div class="card">
-      <h2>⚕️ Non-Medical Wellness Disclaimer (Guideline 1.4.1)</h2>
+      <h2>📱 App Preview &amp; Real Interface / 真实运行画面</h2>
+      <div class="shots">
+        <figure>
+          <img src="./screenshots/shot_01_cockpit.png" alt="SomnoPod Live Sleep Monitor &amp; 432Hz Soundscape"/>
+          <figcaption>Live Sleep Monitor &amp; 432Hz Chords</figcaption>
+        </figure>
+        <figure>
+          <img src="./screenshots/shot_02_mixer.png" alt="48kHz Multi-Track Soundscape Mixer"/>
+          <figcaption>48kHz Rain &amp; Brainwave Mixer</figcaption>
+        </figure>
+        <figure>
+          <img src="./screenshots/shot_04_healthkit_ledger.png" alt="Morning Sleep Stages &amp; HRV Report"/>
+          <figcaption>Sleep Stages &amp; HRV Report</figcaption>
+        </figure>
+        <figure>
+          <img src="./screenshots/shot_05_elder_mode.png" alt="46pt Glasses-Free Easy Mode"/>
+          <figcaption>关怀大字版 / Easy Mode</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>⚕️ Non-Medical Wellness Disclaimer</h2>
       <div class="warn">
-        <p><strong>SomnoPod (眠舱)</strong> is intended solely for general sleep relaxation, white-noise soundscapes, breathing mindfulness, and personal wellness self-tracking. It is <strong>not a medical device</strong> and is not intended to diagnose, treat, cure, or prevent Obstructive Sleep Apnea (OSA), arrhythmia, insomnia, or any medical condition. Always consult a qualified physician for medical advice.</p>
-        <p><strong>非医疗器械声明</strong>：眠舱 (SomnoPod) 仅用于日常睡眠放松、环境白噪音助眠、正念呼吸引导与个人健康自我记录，<strong>不属于医疗器械</strong>，不提供任何临床诊断或治疗建议。如有打呼憋气、胸闷或持续失眠症状，请及时就医。</p>
+        <p><strong>SomnoPod (眠舱)</strong> is intended solely for general sleep relaxation, white-noise soundscapes, breathing mindfulness, and personal wellness self-tracking. It is <strong>not a medical device</strong> and does not provide clinical diagnosis or medical treatment.</p>
+        <p><strong>非医疗器械声明</strong>：眠舱仅用于日常助眠放松、白噪音环境声与个人睡眠健康自我记录，不属于医疗器械，不提供任何医学诊断建议。</p>
       </div>
     </div>
 
     <footer>
-      Official Contact &amp; Support: <a href="mailto:t58@163.com">t58@163.com</a> ·
+      Official Support: <a href="mailto:t58@163.com">t58@163.com</a> ·
       <a href="./SUPPORT.html">Support</a> ·
       <a href="./PRIVACY_POLICY.html">Privacy Policy</a> ·
-      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Terms of Use (Apple Standard EULA)</a><br/>
-      © 2026 CHUNHONG TANG · SomnoPod Bio-Acoustic Sleep Lab. All rights reserved.
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Terms of Use (EULA)</a><br/>
+      © 2026 SomnoPod Acoustic Lab. All rights reserved.
     </footer>
   </div>
+
+  <script>
+  const I18N = {
+    en: {
+      t_badge: "🌍 15 Languages Worldwide · No Sign-Up, Zero Ads · 100% On-Device Privacy",
+      t_h1: "SomnoPod — Contact-Free Sleep Tracker & 432Hz White Noise",
+      t_lead: "No watch or account needed: place your phone beside your pillow to track deep & light sleep stages, breathing rate, local snore clips, and Apple Watch / Bluetooth HRV — while drifting off to live 48kHz 432Hz chords & forest rain.",
+      t_btn_ios: "🍎 Download on the App Store",
+      t_btn_and: "🤖 Official Android Free APK (v1.1.0)",
+      t_f1_t: "🫁 Effortless All-Night Sleep Monitoring",
+      t_f1_d: "Automatically tracks sleep onset, deep/light sleep stages, movements, breathing rhythm, and local snore/sleep-talk highlights with clear morning sleep scores.",
+      t_f2_t: "🎵 Live 48kHz 432Hz Chords & Rain White Noise",
+      t_f2_d: "Zero static MP3 loops: 10 pure-intonation master chords, 8 nature ambiences (forest rain, ocean surf, fireplace, pink/brown noise), 4-7-8 breathwork & 20m power nap.",
+      t_f3_t: "⌚ Apple Watch & Bluetooth Heart Rate (HRV)",
+      t_f3_d: "Syncs with Apple HealthKit and connects directly to Huawei, Garmin & standard BLE 0x180D heart rate monitors for live sleep BPM and morning HRV recovery.",
+      t_f4_t: "⏰ Smart Light-Sleep Alarm & Easy Mode",
+      t_f4_d: "Gently wakes you with dawn birds and chimes during your lightest sleep phase. Includes a 46pt Extra-Large Bedtime Mode for glasses-free comfort."
+    },
+    hant: {
+      t_badge: "🌍 支援全球 15 種語言 · 免註冊零廣告 · 100% 本機離線隱私",
+      t_h1: "眠艙 SomnoPod — 枕邊無感睡眠監測 & 432Hz 腦波白噪音助眠",
+      t_lead: "免穿戴手錶、免註冊帳號：手機放在枕邊即可自動監測整夜深淺睡眠階段、呼吸節律、打呼/夢話片段與藍牙/Apple Watch 心率 HRV，伴隨 48kHz 即時 432Hz 暖弦與夜雨自然入睡。",
+      t_btn_ios: "🍎 App Store 免費下載 (iOS / iPadOS)",
+      t_btn_and: "🤖 安卓官網免費版下載 (v1.1.0 APK)",
+      t_f1_t: "🫁 一目了然的整夜睡眠監測",
+      t_f1_d: "自動記錄入睡時間、深睡與淺睡比例、夜間翻身與呼吸頻率，本機私密捕捉打呼與夢話片段，早晨即看完整睡眠評分。",
+      t_f2_t: "🎵 48kHz 即時 432Hz 暖弦與森林夜雨",
+      t_f2_d: "內建 10 款純律和弦、8 款自然白噪音（森林夜雨、深海海浪、壁爐暖火、粉紅/布朗噪音）、4-7-8 減壓呼吸與 20 分鐘午睡。",
+      t_f3_t: "⌚ Apple Watch & 藍牙心率 HRV 同步",
+      t_f3_d: "支援 Apple 健康與華為、佳明等標準 BLE 0x180D 心率廣播手錶/手環，追蹤夜間最低心率與晨間 HRV 恢復力。",
+      t_f4_t: "⏰ 淺睡智慧喚醒 & 長輩超大字模式",
+      t_f4_d: "於淺睡階段以柔和晨鳥與風鈴漸強喚醒；內建 46 號超大字關懷模式與語音播報。"
+    },
+    ja: {
+      t_badge: "🌍 世界15言語対応 · 登録不要・広告ゼロ · 100%端末内オフライン保護",
+      t_h1: "SomnoPod (眠艙) — 枕元・非接触睡眠モニター＆432Hzホワイトノイズ",
+      t_lead: "スマホを枕元に置くだけで、深い/浅い睡眠段階・呼吸リズム・いびき録音・Apple Watch/BLE心拍HRVを自動モニタリング。48kHzリアルタイム合成の432Hz暖和音と夜雨サウンドで深い眠りへ。",
+      t_btn_ios: "🍎 App Store で無料ダウンロード",
+      t_btn_and: "🤖 Android 公式無料版 APK (v1.1.0)",
+      t_f1_t: "🫁 一目でわかる終夜睡眠モニタリング",
+      t_f1_d: "ウォッチ不要で入眠時間・深睡眠/浅睡眠・寝返り・呼吸数・いびきを自動記録し、毎朝の睡眠スコアを算出します。",
+      t_f2_t: "🎵 48kHz 432Hz和音＆夜雨ホワイトノイズ",
+      t_f2_d: "10種の純律和音、8種の自然環境音（夜雨・波音・焚き火・ピンク/ブラウンノイズ）、4-7-8呼吸法、20分パワーナップを搭載。",
+      t_f3_t: "⌚ Apple Watch＆Bluetooth心拍HRV連携",
+      t_f3_d: "AppleヘルスケアおよびBLE 0x180D心拍計・スマートウォッチと連携し、睡眠中の心拍数と朝のHRV回復度を可視化。",
+      t_f4_t: "⏰ 浅睡眠スマート目覚まし＆大文字モード",
+      t_f4_d: "眠りの浅いタイミングで小鳥とチャイムで爽快に覚醒。裸眼でも見やすい46pt特大文字モード搭載。"
+    },
+    ko: {
+      t_badge: "🌍 전 세계 15개 언어 지원 · 회원가입/광고 없음 · 100% 기기 내 오프라인 보안",
+      t_h1: "SomnoPod — 베개 옆 비접촉 수면 측정 & 432Hz 백색소음",
+      t_lead: "워치나 로그인 없이 스마트폰을 베개 옆에 두면 깊은/얕은 수면 단계, 호흡, 코골이 녹음 및 Apple Watch/블루투스 심박수 HRV를 자동 측정하며 48kHz 432Hz 화음과 빗소리로 꿀잠을 유도합니다.",
+      t_btn_ios: "🍎 App Store 다운로드",
+      t_btn_and: "🤖 안드로이드 공식 무료 APK (v1.1.0)",
+      t_f1_t: "🫁 한눈에 보는 정밀 수면 모니터링",
+      t_f1_d: "깊은 수면, 얕은 수면, 뒤척임, 호흡수 및 코골이 하이라이트를 기기 내부에 안전하게 기록하고 아침 수면 점수를 제공합니다.",
+      t_f2_t: "🎵 48kHz 실시간 432Hz 화음 & 밤비 백색소음",
+      t_f2_d: "10가지 수면 화음, 8가지 자연의 소리(밤비, 파도, 모닥불, 핑크/브라운 노이즈), 4-7-8 호흡법과 20분 파워 낮잠 지원.",
+      t_f3_t: "⌚ Apple Watch & 블루투스 심박수 HRV",
+      t_f3_d: "Apple 건강 및 화웨이/가민 등 BLE 0x180D 심박수 워치·밴드와 실시간 연동하여 수면 심박수와 HRV 회복도를 분석합니다.",
+      t_f4_t: "⏰ 얕은 수면 스마트 알람 & 큰글씨 모드",
+      t_f4_d: "얕은 수면 구간에서 새소리와 차임벨로 상쾌하게 깨워주며, 46pt 큰글씨 간편 모드를 제공합니다."
+    },
+    es: {
+      t_badge: "🌍 15 idiomas · Sin registro ni anuncios · 100% privado offline",
+      t_h1: "SomnoPod — Monitor de Sueño sin Contacto y Ruido Blanco 432Hz",
+      t_lead: "Coloca tu teléfono junto a la almohada para medir fases de sueño profundo/ligero, respiración, ronquidos y VFC (Apple Watch / Bluetooth) mientras duermes con lluvia y acordes 432Hz en 48kHz.",
+      t_btn_ios: "🍎 Descargar en App Store",
+      t_btn_and: "🤖 Descargar APK Gratis Android (v1.1.0)",
+      t_f1_t: "🫁 Monitorización Completa del Sueño",
+      t_f1_d: "Registra sueño profundo y ligero, movimientos, ritmo respiratorio y clips locales de ronquidos con puntuación matutina.",
+      t_f2_t: "🎵 Sonidos 48kHz de Lluvia, Ruido Blanco y 432Hz",
+      t_f2_d: "10 acordes armónicos, 8 ambientes naturales (lluvia, olas, chimenea, ruido rosa/marrón), respiración 4-7-8 y siesta de 20 min.",
+      t_f3_t: "⌚ Apple Watch y Pulso Bluetooth (VFC)",
+      t_f3_d: "Sincronización con Apple Salud y relojes/bandas BLE 0x180D para medir pulsaciones nocturnas y recuperación VFC.",
+      t_f4_t: "⏰ Alarma Inteligente de Sueño Ligero",
+      t_f4_d: "Despierta suavemente en tu fase de sueño más ligero, con modo de letra gigante de 46pt."
+    },
+    de: {
+      t_badge: "🌍 15 Sprachen · Ohne Konto & Werbung · 100 % Offline-Datenschutz",
+      t_h1: "SomnoPod — Kontaktloser Schlaftracker & 432Hz Weißes Rauschen",
+      t_lead: "Einfach neben das Kissen legen: SomnoPod misst Tief- & Leichtschlafphasen, Atmung, Schnarchen sowie Apple Watch / Bluetooth-HRV und begleitet Sie mit 48kHz-Nachtregen & 432Hz-Akkorden in den Schlaf.",
+      t_btn_ios: "🍎 Im App Store laden",
+      t_btn_and: "🤖 Offizielle Android Gratis-APK (v1.1.0)",
+      t_f1_t: "🫁 Übersichtlicher Ganznacht-Schlafmonitor",
+      t_f1_d: "Erfasst Einschlafzeit, Schlafphasen, Bewegungen, Atemfrequenz und lokale Schnarch-Clips inklusive Schlafwert am Morgen.",
+      t_f2_t: "🎵 48kHz Live-Regen, Weißes Rauschen & 432Hz",
+      t_f2_d: "10 reine Schlafakkorde, 8 Naturklänge (Regen, Meer, Kaminfeuer, Rosa/Braunes Rauschen), 4-7-8-Atmung & 20m Powernap.",
+      t_f3_t: "⌚ Apple Watch & Bluetooth-Herzfrequenz (HRV)",
+      t_f3_d: "Verbindet Apple Health sowie Huawei/Garmin BLE 0x180D Pulsuhren für nächtliche Herzfrequenz- und HRV-Erholungsanalyse.",
+      t_f4_t: "⏰ Sanfter Leichtschlaf-Wecker & Großschrift",
+      t_f4_d: "Weckt Sie sanft im Leichtschlaf-Fenster mit Vogelgesang; inklusive 46pt Großschrift-Modus."
+    }
+  };
+  const ZH_DEFAULT = {};
+  Object.keys(I18N.en).forEach(k => { const el = document.getElementById(k); if (el) ZH_DEFAULT[k] = el.innerHTML; });
+  function applyWebLang(code) {
+    const dict = code === 'zh' ? ZH_DEFAULT : (I18N[code] || I18N.en);
+    Object.keys(dict).forEach(k => { const el = document.getElementById(k); if (el) el.innerHTML = dict[k]; });
+    document.getElementById('langSelect').value = code;
+  }
+  document.getElementById('langSelect').addEventListener('change', e => applyWebLang(e.target.value));
+  (function autoDetect() {
+    const nav = (navigator.language || 'zh').toLowerCase();
+    if (nav.startsWith('zh-tw') || nav.startsWith('zh-hk') || nav.includes('hant')) applyWebLang('hant');
+    else if (nav.startsWith('zh')) applyWebLang('zh');
+    else if (nav.startsWith('ja')) applyWebLang('ja');
+    else if (nav.startsWith('ko')) applyWebLang('ko');
+    else if (nav.startsWith('es')) applyWebLang('es');
+    else if (nav.startsWith('de')) applyWebLang('de');
+    else applyWebLang('en');
+  })();
+  </script>
 </body>
 </html>
