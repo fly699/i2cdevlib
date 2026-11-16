@@ -1,7 +1,7 @@
 # 律动健走 (WalkFit) 隐私政策 | Privacy Policy | プライバシーポリシー
 
 **生效日期 / Effective Date / 発効日**: 2026-03-31  
-**最后更新 / Last Updated / 最終更新日**: 2026-11-12 (v6.1.0)  
+**最后更新 / Last Updated / 最終更新日**: 2026-11-17 (v6.2.0)  
 **应用与研发主体 / Developer**: WalkFit Clinical Sports Lab (`com.walkfit.app.ios` / `com.walkfit.app.china` / `com.walkfit.app.global`)  
 **官方联系邮箱 / Contact Email**: [t58@163.com](mailto:t58@163.com)  
 **工信部 App ICP 备案号 / China MIIT ICP Filing**: [京ICP备2026077713号-1A](https://beian.miit.gov.cn/)
@@ -10,7 +10,7 @@
 
 ## 一、中文隐私政策 (Chinese Privacy Policy)
 
-欢迎使用 **律动健走 (WalkFit) — 3+3间歇快慢交替步行节拍器与夜间神经助眠剧场**（以下简称“本应用”）。我们深知运动、健康与睡眠数据的敏感性与重要性，本应用严格遵循 **“本地离线优先、数据最小化、零第三方广告追踪、零录音上传”** 的设计原则。
+欢迎使用 **律动健走 (WalkFit) — 3+3间歇快慢交替步行节拍器与夜间神经助眠舱**（以下简称“本应用”）。我们深知运动、健康与睡眠数据的敏感性与重要性，本应用严格遵循 **“本地离线优先、数据最小化、零第三方广告追踪、零录音上传”** 的设计原则。
 
 ### 1. 我们处理哪些信息及用途（100% 设备本地存储）
 本应用**无需注册账号**即可完整使用。所有个人体征参数、运动记录与睡眠节律账本均 **100% 存储在您的手机本地沙盒 (`UserDefaults` / 本地加密存储)** 中，绝不上传至任何开发者服务器：
@@ -26,15 +26,15 @@
      - **写入 (3 项)**：将真实完成的间歇健走体能训练记录 (`Workouts`)、活动能量 (`Active Energy`, kcal) 及步行+跑步距离 (`Distance`, km) 写入系统“健康”App 以闭合 Apple 健身圆环（内置演示样本记录不会写入 HealthKit）。
    - **严格合规保护**：我们严格遵守 Apple HealthKit 规范，**绝不会将通过 HealthKit 获取的任何健康数据用于广告宣传、市场营销、用户画像，亦绝不出售或共享给任何第三方数据经纪商或云端服务器**。
 
-3. **五源传感神经助眠剧场 4.0（夜间本地内存瞬时节律推演，100% 零录音、零上传）**：
-   - **用途**：当您在夜间开启“五源传感神经助眠剧场 4.0”并选择包含声学感知的传感模式时，麦克风 (`NSMicrophoneUsageDescription`) 与加速度计/陀螺仪仅在设备易失性内存 (RAM) 中实时计算声压包络能量 (RMS) 与胸腹呼吸起伏节律，用于驱动 48kHz 助眠声景自适应柔化与睡眠呼吸节律评估。
-   - **严格隐私承诺**：**本应用绝不录制、不落盘保存任何原始音频文件，亦绝不向任何云端服务器上传任何声音或传感器数据**。您也可随时切换为“枕边耦合微振模式”或关闭麦克风权限。
+3. **五源传感神经助眠舱 4.0（夜间本地内存瞬时节律推演，100% 零录音、零上传）**：
+   - **用途**：当您在夜间开启“五源传感神经助眠舱 4.0”时，设备内置加速度计、陀螺仪、气压计与蓝牙心率传感器仅在设备易失性内存 (RAM) 中实时计算枕边床垫微振与胸腹呼吸起伏节律，用于驱动 48kHz 助眠声景自适应柔化与睡眠呼吸节律评估。
+   - **严格隐私承诺**：**本应用绝不录制、不落盘保存任何原始音频文件，亦绝不向任何云端服务器上传任何声音或传感器数据**。您也可随时切换为“枕边耦合微振模式”或纯心率模式。
 
 4. **蓝牙外设连接 (`CoreBluetooth` / `NSBluetoothAlwaysUsageDescription`)**：
    - **用途**：仅在您主动打开蓝牙心率连接面板时，扫描并直连符合开放标准的 **BLE 0x180D 蓝牙心率胸带、心率臂带或运动手表/手环**，以实时展示精准心率 (BPM) 与梅脱 (METs) 区间。
 
 5. **后台音频播放 (`UIBackgroundModes: audio`)**：
-   - **用途**：当您在日间 `3+3` 间歇健走或夜间助眠剧场运行期间将应用切入后台或锁屏息屏时，持续为您提供 48kHz 实时合成步频节拍器、和弦伴奏、快慢走阶段切换语音播报及夜间 48kHz 神经助眠声景，并在系统控制中心与锁屏界面提供媒体控制卡片。
+   - **用途**：当您在日间 `3+3` 间歇健走或夜间助眠舱运行期间将应用切入后台或锁屏息屏时，持续为您提供 48kHz 实时合成步频节拍器、和弦伴奏、快慢走阶段切换语音播报及夜间 48kHz 神经助眠声景，并在系统控制中心与锁屏界面提供媒体控制卡片。
 
 6. **相册保存权限 (`NSPhotoLibraryAddUsageDescription`)**：
    - **用途**：仅在您主动点击“保存高清运动海报到相册”时，将本地渲染生成的分享图片写入系统相册。本应用不读取您的相册历史照片。
@@ -59,7 +59,7 @@
 
 ## 二、English Privacy Policy
 
-Welcome to **WalkFit — 3+3 Interval Walking Metronome & 5-Sensor Sleep Sanctuary** ("the App"), developed by **WalkFit Clinical Sports Lab**. We built WalkFit strictly around **100% On-Device Storage, Data Minimization, Zero Ad Tracking, and Zero Audio Recording**.
+Welcome to **WalkFit — 3+3 Interval Walking Metronome & 5-Sensor Sleep Studio** ("the App"), developed by **WalkFit Clinical Sports Lab**. We built WalkFit strictly around **100% On-Device Storage, Data Minimization, Zero Ad Tracking, and Zero Audio Recording**.
 
 ### 1. Information We Process (100% Stored Locally on Your Device)
 WalkFit requires **no account registration**. All personal physical parameters, walking workout logs, and sleep rhythm records are stored **100% locally on your device** and are never uploaded to any developer servers:
@@ -75,15 +75,15 @@ WalkFit requires **no account registration**. All personal physical parameters, 
      - **HealthKit Write (3 types)**: Writes completed real Interval Walking Workouts (`HKWorkoutType`), Active Energy Burned (`kcal`), and Walking + Running Distance (`km`) to Apple Health to close your Fitness Rings (built-in demo sample workouts are never written to HealthKit).
    - **Strict HealthKit Compliance**: **HealthKit data is processed exclusively on your device and is NEVER used for advertising, marketing, user profiling, or sold/shared with any third parties or external servers.**
 
-3. **5-Sensor Sleep Sanctuary 4.0 (Volatile RAM Processing, Zero Audio Recording)**:
-   - **Purpose**: When acoustic sensing is enabled in Sleep Sanctuary 4.0, the microphone (`NSMicrophoneUsageDescription`) and motion sensors compute sound pressure envelopes (RMS) and breathing rhythms strictly in volatile on-device RAM to drive real-time 48kHz sleep soundscape softening and sleep stage estimation.
+3. **5-Sensor Sleep Studio 4.0 (Volatile RAM Processing, Zero Audio Recording)**:
+   - **Purpose**: In Sleep Studio 4.0, on-device motion sensors (accelerometer/gyroscope), barometer, and optional BLE heart rate sensors compute mattress micro-vibration and breathing rhythms strictly in volatile on-device RAM to drive real-time 48kHz sleep soundscape softening and sleep stage estimation.
    - **Strict Guarantee**: **WalkFit NEVER records, saves to disk, or transmits any audio files or voice data to any server.**
 
 4. **Bluetooth LE Peripherals (`CoreBluetooth`)**:
    - **Purpose**: Used only when you open the Bluetooth Heart Rate Hub to scan and connect to standard **Bluetooth LE (0x180D) heart rate chest straps, armbands, or smartwatches** for live BPM and METs telemetry.
 
 5. **Background Audio (`UIBackgroundModes: audio`)**:
-   - **Purpose**: Ensures uninterrupted 48kHz walking metronome beats, chord accompaniment, interval voice coaching (during walking workouts), and 48kHz neuro-acoustic sleep soundscapes (during Sleep Sanctuary) when the screen is locked or when you navigate to the Home Screen, with full Lock Screen / Control Center Now Playing controls.
+   - **Purpose**: Ensures uninterrupted 48kHz walking metronome beats, chord accompaniment, interval voice coaching (during walking workouts), and 48kHz neuro-acoustic sleep soundscapes (during Sleep Studio) when the screen is locked or when you navigate to the Home Screen, with full Lock Screen / Control Center Now Playing controls.
 
 6. **In-App Purchases (`StoreKit 2`)**:
    - All `WalkFit Pro` subscriptions (`com.walkfit.pro.monthly`, `com.walkfit.pro.yearly`) and Lifetime unlock (`com.walkfit.pro.lifetime`) are processed exclusively by Apple via StoreKit 2. We never access your payment card details.
