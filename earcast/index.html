@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>EarCast Pro — Split-Ear Wireless Isolation &amp; V2 SHA-256 Forensic Audio</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #070A12; color: #F8FAFC; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 28px 20px 64px; }
+  .topbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 24px; border-bottom: 1px solid #1E293B; }
+  .brand { font-weight: 900; font-size: 22px; color: #F59E0B; letter-spacing: 0.5px; }
+  select { background: #111827; color: #F8FAFC; border: 1.5px solid #38BDF8; border-radius: 999px; padding: 8px 16px; font-weight: 700; cursor: pointer; }
+  .hero { text-align: center; padding: 38px 12px 28px; }
+  .hero h1 { font-size: clamp(28px, 5vw, 46px); font-weight: 900; margin-bottom: 10px; }
+  .hero .sub { font-size: 20px; color: #38BDF8; font-weight: 700; margin-bottom: 14px; }
+  .hero .promo { max-width: 780px; margin: 0 auto; color: #CBD5E1; font-size: 16px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px; margin-top: 28px; }
+  .card { background: #0F1624; border: 1.5px solid #24324B; border-radius: 22px; padding: 24px; box-shadow: 0 16px 40px rgba(0,0,0,0.45); }
+  .badge { display: inline-block; background: linear-gradient(90deg,#F59E0B,#10B981); color: #05080F; font-weight: 900; font-size: 12px; padding: 4px 12px; border-radius: 999px; margin-bottom: 10px; }
+  canvas { width: 100%; height: 190px; background: #080C15; border-radius: 14px; border: 1px solid #1E293B; margin: 12px 0; }
+  .btn { display: inline-block; width: 100%; padding: 12px 16px; border-radius: 12px; border: 2px solid #F43F5E; background: rgba(244,63,94,0.15); color: #FDA4AF; font-weight: 800; cursor: pointer; font-size: 15px; margin-top: 10px; }
+  .btn.clean { border-color: #10B981; background: rgba(16,185,129,0.16); color: #6EE7B7; }
+  .hashbox { font-family: Consolas, monospace; font-size: 13px; background: #080C15; padding: 12px; border-radius: 12px; border: 1px solid #1E293B; margin-top: 10px; word-break: break-all; }
+  .footer { margin-top: 44px; text-align: center; color: #94A3B8; font-size: 14px; }
+  .footer a { color: #38BDF8; margin: 0 10px; }
+</style>
+</head>
+<body>
+<div class="wrap" id="appRoot">
+  <div class="topbar">
+    <div class="brand">● EARCAST PRO · GLOBAL 15-LANGUAGE EDITION</div>
+    <select id="langSel"></select>
+  </div>
+  <div class="hero">
+    <h1 id="hName"></h1>
+    <div class="sub" id="hSub"></div>
+    <p class="promo" id="hPromo"></p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <span class="badge" id="s1Badge"></span>
+      <h2 id="s1Title"></h2>
+      <canvas id="waveCanvas" width="520" height="190"></canvas>
+      <p id="s1Sub" style="color:#CBD5E1;font-size:14px;"></p>
+    </div>
+    <div class="card">
+      <span class="badge" id="s2Badge"></span>
+      <h2 id="s2Title"></h2>
+      <div class="hashbox" id="hashBox"></div>
+      <button class="btn clean" id="tamperBtn"></button>
+      <p id="s2Sub" style="color:#CBD5E1;font-size:14px;margin-top:10px;"></p>
+    </div>
+  </div>
+  <div class="footer">
+    <span id="offTag"></span><br/><br/>
+    <a href="./PRIVACY_POLICY.html">Privacy Policy</a> | <a href="./SUPPORT.html">Support &amp; User Guide</a>
+  </div>
+</div>
+<script>
+const LOCALES = [{"code": "zh-Hans", "label": "简体中文", "dir": "ltr", "name": "耳界 EarCast: 蓝牙无线麦·助听与防篡改录音", "subtitle": "真无线一耳拾音一耳听 · 30秒回溯密码存证", "promo": "独创真无线「一耳放远收音(0x0000静音防啸叫)·一耳佩戴独享25x超清人声」！内置前30秒时光机回溯预录与三层V2链式SHA-256密码学防篡改取证核验，支持15国语言，100%本机离线隐私保护。", "s1": ["专利独创 · 真无线分耳黑科技", "一耳放远收音 · 一耳佩戴听", "拾音耳扬声器 0x0000 锁死静音 · 零漏音零啸叫 · 25x人声直达耳内"], "s2": ["密码学防篡改 · 30秒时光机", "先听重点再按录 · 改1比特即识破", "自动并入前30秒内存原声 · 三层 V2 SHA-256 块链离线取证证书"], "ui": {"mode_pill": "✨ 极简 / 🎛️ 专业台", "b1": "独有功能 ① · 真无线物理分耳隔离", "left_bud": "🎙️ 左耳放桌面收音", "left_sub": "🔇 0x0000 零外放防啸叫", "right_bud": "👂 右耳佩戴独享听", "right_sub": "🔊 25x 超清人声直达", "cta_listen": "● 正在实时超清监听 (AirPods Pro)", "gain_lbl": "智能人声清晰放大倍率", "b2": "独有功能 ② · 30s时光机 & SHA-256取证", "cert_ok": "✓ MATCH · 三层链式SHA-256验证零篡改", "cert_bad": "✗ MISMATCH · 检出1比特篡改 (0x1F04)", "rec_btn": "● 防篡改取证录制中 (含前30秒)", "eq_title": "48kHz 母带超清 · 6段参量均衡曲线", "sensor_title": "多模态六轴IMU + 步频 + 气压门控 & 黑屏盲操", "offline_tag": "🔒 100% 本机离线沙盒 · 零云端上传 · 支持15国语言"}}, {"code": "zh-Hant", "label": "繁體中文", "dir": "ltr", "name": "耳界 EarCast: 藍牙無線麥·助聽與防篡改錄音", "subtitle": "真無線一耳收音一耳聽 · 30秒回溯密碼存證", "promo": "獨創真無線「一耳放遠收音(0x0000靜音防嘯叫)·一耳佩戴獨享25x超清人聲」！內建前30秒時光機回溯預錄與三層V2鏈式SHA-256密碼學防篡改取證核驗，支援15國語言，100%本機離線保護。", "s1": ["專利獨創 · 真無線分耳黑科技", "一耳放遠收音 · 一耳佩戴聽", "拾音耳揚聲器 0x0000 鎖死靜音 · 零漏音零嘯叫 · 25x人聲直達耳內"], "s2": ["密碼學防篡改 · 30秒時光機", "先聽重點再按錄 · 改1位元即識破", "自動併入前30秒記憶體原聲 · 三層 V2 SHA-256 區塊鏈離線取證證書"], "ui": {"mode_pill": "✨ 極簡 / 🎛️ 專業台", "b1": "獨有功能 ① · 真無線物理分耳隔離", "left_bud": "🎙️ 左耳放桌面收音", "left_sub": "🔇 0x0000 零外放防嘯叫", "right_bud": "👂 右耳佩戴獨享聽", "right_sub": "🔊 25x 超清人聲直達", "cta_listen": "● 正在即時超清監聽 (AirPods Pro)", "gain_lbl": "智慧人聲清晰放大倍率", "b2": "獨有功能 ② · 30s時光機 & SHA-256取證", "cert_ok": "✓ MATCH · 三層鏈式SHA-256驗證零篡改", "cert_bad": "✗ MISMATCH · 檢出1位元篡改 (0x1F04)", "rec_btn": "● 防篡改取證錄製中 (含前30秒)", "eq_title": "48kHz 母帶超清 · 6段參量均衡曲線", "sensor_title": "多模態六軸IMU + 步頻 + 氣壓門控 & 黑屏盲操", "offline_tag": "🔒 100% 本機離線沙盒 · 零雲端上傳 · 支援15國語言"}}, {"code": "en-US", "label": "English", "dir": "ltr", "name": "EarCast: 1-Ear Mic & Live Amp", "subtitle": "Split Earbud Listen & SHA-256", "promo": "Exclusive True Wireless 1-Bud Remote Mic (0x0000 zero-bleed muted) + 1-Bud 25x Private Listen! Includes 30s Time-Machine Pre-Roll & V2 SHA-256 Tamper-Proof Proof.", "s1": ["EXCLUSIVE SPLIT-EAR TECH", "1 Bud Remote Mic · 1 Bud Listen", "Remote earbud speaker locked at 0x0000 silent · Zero bleed · Zero howl"], "s2": ["CRYPTOGRAPHIC FORENSIC PROOF", "-30s Rewind & SHA-256 Seal", "Capture the prior 30s retroactively · Detects even a 1-bit audio edit"], "ui": {"mode_pill": "✨ Easy / 🎛️ Studio", "b1": "EXCLUSIVE #1 · SPLIT-EAR ISOLATION", "left_bud": "🎙️ Left Bud: Desk Mic", "left_sub": "🔇 0x0000 Zero-Bleed Muted", "right_bud": "👂 Right Bud: In Ear", "right_sub": "🔊 25x Private HD Speech", "cta_listen": "● LIVE LISTENING ACTIVE (AirPods Pro)", "gain_lbl": "Smart Voice Clarity Booster", "b2": "EXCLUSIVE #2 · -30s & SHA-256 PROOF", "cert_ok": "✓ MATCH · 3-Layer SHA-256 Verified Authentic", "cert_bad": "✗ MISMATCH · 1-Bit Tamper Caught (0x1F04)", "rec_btn": "● Recording SHA-256 (+30s Pre-Roll)", "eq_title": "48kHz Mastering Hi-Res · 6-Band Parametric EQ", "sensor_title": "6-Axis IMU + Cadence + Barometer & OLED Lock", "offline_tag": "🔒 100% On-Device Offline · Zero Cloud · 15 Languages"}}, {"code": "nl-NL", "label": "Nederlands", "dir": "ltr", "name": "EarCast: 1-Oor Mic & Versterk", "subtitle": "Draadloos Luisteren & SHA-256", "promo": "Uniek: gebruik 1 draadloos oordopje als stille externe microfoon (0x0000 zonder rondzingen) en luister 25x helder via het andere! Met 30s Tijdmachine & SHA-256 bewijs.", "s1": ["UNIEKE DRAADLOZE 1-OOR TECHNIEK", "1 Oordopje Mic · 1 Privé Horen", "Externe speaker op 0x0000 stil · Geen geluidslek · Geen rondzingen"], "s2": ["MANIPULATIEBESTENDIG BEWIJS", "-30s Tijdmachine & SHA-256", "Bewaar de vorige 30 seconden achteraf · Ontmaskert elke 1-bit wijziging"], "ui": {"mode_pill": "✨ Simpel / 🎛️ Studio", "b1": "EXCLUSIEF #1 · DRAADLOZE 1-OOR ISOLATIE", "left_bud": "🎙️ Links: Tafel-Mic", "left_sub": "🔇 0x0000 Stil · Geen Piep", "right_bud": "👂 Rechts: In Uw Oor", "right_sub": "🔊 25x Helder Privégeluid", "cta_listen": "● LIVE LUISTEREN ACTIEF (AirPods Pro)", "gain_lbl": "Slimme Spraakversterking", "b2": "EXCLUSIEF #2 · -30s & SHA-256 BEWIJS", "cert_ok": "✓ MATCH · 3-Laags SHA-256 100% Origineel", "cert_bad": "✗ MISMATCH · 1-Bit Manipulatie Ontdekt!", "rec_btn": "● SHA-256 Bewijsopname (+30s Buffer)", "eq_title": "48kHz Hi-Res Audio · 6-Bands Parametrische EQ", "sensor_title": "6-Assige IMU + Stappen + Barometer & OLED Slot", "offline_tag": "🔒 100% Lokaal Offline · Geen Cloud · 15 Talen"}}, {"code": "ja", "label": "日本語", "dir": "ltr", "name": "EarCast: 片耳ワイヤレス集音＆改ざん防止録音", "subtitle": "片耳マイク・25倍補聴クリア増幅・30秒遡り保存", "promo": "完全ワイヤレスの片耳を遠くに置いて無音集音(0x0000音漏れゼロ)、もう片耳で25倍クリア聴取！30秒タイムマシン遡り録音とV2連鎖SHA-256改ざん防止証明を100%端末内で実現。", "s1": ["独自技術・左右イヤホン完全分離", "片耳を置いて集音・片耳で聴く", "集音側は0x0000完全無音ロック・音漏れ＆ハウリングゼロで25倍明瞭化"], "s2": ["暗号学的証拠保全＆30秒遡り録音", "聞いた後でも30秒前を完全保存", "3層V2 SHA-256ハッシュ連鎖で封印・1ビットの改ざんも即座に検出"], "ui": {"mode_pill": "✨ 簡単 / 🎛️ プロ卓", "b1": "独自機能 ①・左右イヤホン分離集音", "left_bud": "🎙️ 左：机に置いて集音", "left_sub": "🔇 0x0000 完全無音・防音漏れ", "right_bud": "👂 右：耳に装着して聴取", "right_sub": "🔊 25倍クリア音声独占", "cta_listen": "● リアルタイム集音中 (AirPods Pro)", "gain_lbl": "スマート音声クリア増幅倍率", "b2": "独自機能 ②・30秒遡り＆SHA-256証明", "cert_ok": "✓ MATCH・3層SHA-256 完全一致（未改ざん）", "cert_bad": "✗ MISMATCH・1ビット改ざん検出 (0x1F04)", "rec_btn": "● SHA-256証拠録音中 (+前30秒保存)", "eq_title": "48kHz ハイレゾ集音・6バンドパラメトリックEQ", "sensor_title": "6軸IMU＋歩数＋気圧ゲート＆OLEDポケット暗転", "offline_tag": "🔒 100%オフライン処理・クラウド送信ゼロ・15言語対応"}}, {"code": "ko", "label": "한국어", "dir": "ltr", "name": "EarCast: 한쪽 이어버드 원격수음 & 증거녹음", "subtitle": "무선 마이크 25배 음성증폭 · 30초 사전녹음", "promo": "무선 이어버드 한쪽은 멀리 두어 무음 수음(0x0000 하울링 제로), 다른 쪽은 귀에 꽂아 25배 선명 청취! 30초 타임머신 사전녹음과 3중 SHA-256 위변조 방지 포렌식 인증서 탑재.", "s1": ["독창적 무선 이어버드 좌우 분리", "한쪽은 원격 마이크 · 한쪽은 청취", "수음 이어버드 0x0000 완전 무음 잠금 · 소리 누출 및 하울링 원천 차단"], "s2": ["암호화 증거 보존 & 30초 타임머신", "중요 발언 들은 뒤 눌러도 30초 복원", "3중 V2 SHA-256 블록 체인 봉인 · 단 1비트 편집도 즉시 적발"], "ui": {"mode_pill": "✨ 간편 / 🎛️ 스튜디오", "b1": "독점 기능 ① · 무선 좌우 분리 수음", "left_bud": "🎙️ 왼쪽: 테이블 수음", "left_sub": "🔇 0x0000 완전 무음 잠금", "right_bud": "👂 오른쪽: 귀에 착용", "right_sub": "🔊 25x 초선명 단독 청취", "cta_listen": "● 실시간 초선명 청취 중 (AirPods Pro)", "gain_lbl": "스마트 음성 선명 증폭 배율", "b2": "독점 기능 ② · -30초 & SHA-256 포렌식", "cert_ok": "✓ MATCH · 3중 SHA-256 원본 무결성 확인", "cert_bad": "✗ MISMATCH · 1비트 조작 감지됨 (0x1F04)", "rec_btn": "● SHA-256 증거 녹음 중 (+30초 복원)", "eq_title": "48kHz 마스터링 음질 · 6밴드 파라메트릭 EQ", "sensor_title": "6축 IMU + 걸음수 + 기압 게이트 & 암전 잠금", "offline_tag": "🔒 100% 기기 내 오프라인 · 클라우드 전송 제로"}}, {"code": "de-DE", "label": "Deutsch", "dir": "ltr", "name": "EarCast: 1-Ohr Mikro & Hörplus", "subtitle": "Live-Hören & SHA-256 Aufnahme", "promo": "Exklusiv: 1 Ohrhörer als lautloses Fernmikrofon (0x0000 ohne Pfeifen) + 1 Ohrhörer zum klaren 25x Mithören! Mit 30s Zeitmaschine & V2 SHA-256 Manipulationsschutz.", "s1": ["EXKLUSIVE EINZELOHR-TRENNUNG", "1 Ohrhörer Mikro · 1 Ohr Hören", "Fern-Ohrhörer auf 0x0000 stumm · Kein Tonleck · Kein Pfeifen"], "s2": ["KRYPTOGRAFISCHER BEWEISSCHUTZ", "-30s Vorlauf & SHA-256 Siegel", "Speichert die letzten 30 Sekunden rückwirkend · Erkennt 1-Bit-Edits"], "ui": {"mode_pill": "✨ Einfach / 🎛️ Studio", "b1": "EXKLUSIV #1 · EINZELOHR-ISOLATION", "left_bud": "🎙️ Links: Tischmikro", "left_sub": "🔇 0x0000 Stumm · 0% Leck", "right_bud": "👂 Rechts: Im Ohr", "right_sub": "🔊 25x Klare Sprache", "cta_listen": "● LIVE-HÖREN AKTIV (AirPods Pro)", "gain_lbl": "Intelligente Sprachverstärkung", "b2": "EXKLUSIV #2 · -30s & SHA-256 BEWEIS", "cert_ok": "✓ MATCH · 3-Stufen SHA-256 Unverändert", "cert_bad": "✗ MISMATCH · 1-Bit-Manipulation Erkannt!", "rec_btn": "● SHA-256 Aufnahme (+30s Vorlauf)", "eq_title": "48kHz Hi-Res Audio · 6-Band Parametrischer EQ", "sensor_title": "6-Achsen-IMU + Schritt + Barometer & Sperre", "offline_tag": "🔒 100% Lokal Offline · Keine Cloud · 15 Sprachen"}}, {"code": "fr-FR", "label": "Français", "dir": "ltr", "name": "EarCast: Micro 1-Oreille & Amp", "subtitle": "Écoute Directe & Preuve SHA256", "promo": "Exclusif : 1 écouteur en micro distant muet (0x0000 zéro larsen) + 1 écouteur pour écouter 25x plus net ! Avec mémoire -30s et certificat d'intégrité SHA-256 V2.", "s1": ["ISOLATION SANS FIL EXCLUSIVE", "1 Écouteur Micro · 1 Écoute", "Haut-parleur distant à 0x0000 muet · Zéro fuite · Zéro larsen"], "s2": ["PREUVE AUDIO INVIOLABLE", "Remontée -30s & Sceau SHA-256", "Capturez les 30 secondes précédentes · Détecte 1 seul bit modifié"], "ui": {"mode_pill": "✨ Simple / 🎛️ Studio", "b1": "EXCLUSIF #1 · ISOLATION 1-ÉCOUTEUR", "left_bud": "🎙️ Gauche : Micro Table", "left_sub": "🔇 0x0000 Muet · Sans Larsen", "right_bud": "👂 Droite : Dans l'Oreille", "right_sub": "🔊 Voix HD 25x Privée", "cta_listen": "● ÉCOUTE EN DIRECT ACTIVE (AirPods)", "gain_lbl": "Amplification Vocale Intelligente", "b2": "EXCLUSIF #2 · -30s & PREUVE SHA-256", "cert_ok": "✓ MATCH · Chaîne SHA-256 V2 Authentique", "cert_bad": "✗ MISMATCH · Altération 1-Bit Détectée !", "rec_btn": "● Enregistrement SHA-256 (+30s)", "eq_title": "Audio 48kHz Hi-Res · Égaliseur 6 Bandes", "sensor_title": "IMU 6 Axes + Pas + Baromètre & Verrou OLED", "offline_tag": "🔒 100% Hors Ligne · Zéro Cloud · 15 Langues"}}, {"code": "es-ES", "label": "Español", "dir": "ltr", "name": "EarCast: Micro 1-Oído y Audio", "subtitle": "Amplificador Voz y SHA-256", "promo": "¡Exclusivo: 1 auricular como micrófono remoto mudo (0x0000 sin acoples) y 1 en tu oído con voz 25x más clara! Con pre-grabación de 30s y sello forense SHA-256.", "s1": ["TECNOLOGÍA EXCLUSIVA 1-OÍDO", "1 Auricular Micro · 1 Escucha", "Altavoz remoto bloqueado en 0x0000 mudo · Cero fugas · Cero acoples"], "s2": ["PRUEBA FORENSE INALTERABLE", "Retroceso -30s y Sello SHA-256", "Recupera los 30s previos al tocar Grabar · Detecta 1 bit alterado"], "ui": {"mode_pill": "✨ Fácil / 🎛️ Estudio", "b1": "EXCLUSIVO #1 · AISLAMIENTO 1-AURICULAR", "left_bud": "🎙️ Izq: Micro en Mesa", "left_sub": "🔇 0x0000 Silencio Total", "right_bud": "👂 Der: En Tu Oído", "right_sub": "🔊 Voz HD 25x Privada", "cta_listen": "● ESCUCHA EN VIVO ACTIVA (AirPods)", "gain_lbl": "Amplificador Inteligente de Voz", "b2": "EXCLUSIVO #2 · -30s Y SELLO SHA-256", "cert_ok": "✓ MATCH · Cadena SHA-256 V2 Auténtica", "cert_bad": "✗ MISMATCH · ¡1 Bit Alterado Detectado!", "rec_btn": "● Grabando con SHA-256 (+30s Previos)", "eq_title": "Audio 48kHz Hi-Res · Ecualizador 6 Bandas", "sensor_title": "IMU 6 Ejes + Pasos + Barómetro y Bloqueo OLED", "offline_tag": "🔒 100% Sin Conexión · Cero Nube · 15 Idiomas"}}, {"code": "pt-BR", "label": "Português (BR)", "dir": "ltr", "name": "EarCast: Micro 1-Fone e Voz", "subtitle": "Amplificador Auditivo SHA-256", "promo": "Exclusivo: 1 fone como microfone remoto mudo (0x0000 sem microfonia) + 1 fone no ouvido com voz 25x mais nítida! Com pré-gravação de 30s e prova forense SHA-256.", "s1": ["TECNOLOGIA EXCLUSIVA 1-FONE", "1 Fone Microfone · 1 Escuta", "Alto-falante remoto em 0x0000 mudo · Zero vazamento · Zero microfonia"], "s2": ["PROVA FORENSE ANTIFRAUDE", "Volta -30s e Selo SHA-256 V2", "Salve os 30s anteriores após ouvir · Detecta 1 único bit adulterado"], "ui": {"mode_pill": "✨ Fácil / 🎛️ Estúdio", "b1": "EXCLUSIVO #1 · ISOLAMENTO DE 1 FONE", "left_bud": "🎙️ Esq: Micro na Mesa", "left_sub": "🔇 0x0000 Mudo · Sem Eco", "right_bud": "👂 Dir: No Seu Ouvido", "right_sub": "🔊 Voz HD 25x Privada", "cta_listen": "● ESCUTA AO VIVO ATIVA (AirPods Pro)", "gain_lbl": "Amplificação Inteligente de Voz", "b2": "EXCLUSIVO #2 · -30s E PROVA SHA-256", "cert_ok": "✓ MATCH · Cadeia SHA-256 V2 Autêntica", "cert_bad": "✗ MISMATCH · Adulteração de 1 Bit!", "rec_btn": "● Gravando com SHA-256 (+30s Prévios)", "eq_title": "Áudio 48kHz Hi-Res · Equalizador 6 Bandas", "sensor_title": "IMU 6 Eixos + Passos + Barômetro e Trava OLED", "offline_tag": "🔒 100% Offline no Aparelho · 15 Idiomas"}}, {"code": "it", "label": "Italiano", "dir": "ltr", "name": "EarCast: Micro 1-Orecchio HD", "subtitle": "Amplificatore Voce & SHA-256", "promo": "Esclusivo: 1 auricolare come microfono remoto muto (0x0000 zero fischi) + 1 nell'orecchio con voce 25x nitida! Con pre-registrazione 30s e prova forense SHA-256.", "s1": ["ISOLAMENTO ESCLUSIVO 1-ORECCHIO", "1 Auricolare Mic · 1 Ascolto", "Altoparlante remoto bloccato a 0x0000 · Zero fughe · Zero fischi"], "s2": ["PROVA FORENSE ANTIMANOMISSIONE", "Pre-Rec -30s & Sigillo SHA-256", "Salva i 30 secondi precedenti · Rileva anche 1 solo bit modificato"], "ui": {"mode_pill": "✨ Facile / 🎛️ Studio", "b1": "ESCLUSIVA #1 · ISOLAMENTO 1-AURICOLARE", "left_bud": "🎙️ SX: Micro Tavolo", "left_sub": "🔇 0x0000 Muto · Zero Eco", "right_bud": "👂 DX: Nell'Orecchio", "right_sub": "🔊 Voce HD 25x Privata", "cta_listen": "● ASCOLTO DAL VIVO ATTIVO (AirPods)", "gain_lbl": "Amplificatore Vocale Intelligente", "b2": "ESCLUSIVA #2 · -30s & PROVA SHA-256", "cert_ok": "✓ MATCH · Catena SHA-256 V2 Autentica", "cert_bad": "✗ MISMATCH · Manomissione 1-Bit!", "rec_btn": "● Registrazione SHA-256 (+30s Pre-Rec)", "eq_title": "Audio 48kHz Hi-Res · Equalizzatore 6 Bande", "sensor_title": "IMU 6 Assi + Passi + Barometro & Blocco OLED", "offline_tag": "🔒 100% Offline sul Dispositivo · 15 Lingue"}}, {"code": "ru", "label": "Русский", "dir": "ltr", "name": "EarCast: 1-Наушник Микро Слух", "subtitle": "Усилитель Речи и SHA-256 Блок", "promo": "Эксклюзив: 1 наушник как бесшумный выносной микрофон (0x0000 без свиста) + 2-й в ухе с усилением 25x! Предзапись 30 сек и криптозащита доказательств SHA-256.", "s1": ["РАЗДЕЛЕНИЕ TWS-НАУШНИКОВ", "1 Наушник Микро · 2-й Слушать", "Динамик на столе обнулен в 0x0000 · Ноль утечки · Ноль свиста"], "s2": ["КРИПТОЗАЩИТА ДОКАЗАТЕЛЬСТВ", "Предзапись -30с и SHA-256 Цепь", "Сохраняет прошлые 30 секунд · Мгновенно ловит подмену даже 1 бита"], "ui": {"mode_pill": "✨ Просто / 🎛️ Студия", "b1": "ЭКСКЛЮЗИВ №1 · ИЗОЛЯЦИЯ 1 НАУШНИКА", "left_bud": "🎙️ Левый: На Столе", "left_sub": "🔇 0x0000 Тишина · 0% Свиста", "right_bud": "👂 Правый: В Ухе", "right_sub": "🔊 25x Чистая Речь", "cta_listen": "● МОНИТОРИНГ АКТИВЕН (AirPods Pro)", "gain_lbl": "Умное Усиление Четкости Речи", "b2": "ЭКСКЛЮЗИВ №2 · -30с И ПЕЧАТЬ SHA-256", "cert_ok": "✓ MATCH · Цепь SHA-256 V2 Подлинна", "cert_bad": "✗ MISMATCH · Подмена 1 Бита Выявлена!", "rec_btn": "● Запись SHA-256 (+30с Предзапись)", "eq_title": "48кГц Hi-Res Аудио · 6-Полосный Эквалайзер", "sensor_title": "6-Осевой IMU + Шагомер + Барометр и Блок OLED", "offline_tag": "🔒 100% Офлайн в Устройстве · 15 Языков"}}, {"code": "ar-SA", "label": "العربية", "dir": "rtl", "name": "EarCast: مايك سماعة ومقوي سمع", "subtitle": "عزل سماعة واحدة وتوثيق SHA256", "promo": "حصرياً: اجعل إحدى فردتي السماعة لاقطاً بعيداً صامتاً (0x0000 بلا صفير) واستمع بالأخرى بوضوح 25x! مع استرجاع آخر 30 ثانية وشهادة توثيق SHA-256 محلياً 100%.", "s1": ["تقنية عزل السماعة اللاسلكية", "فردة للالتقاط · وفردة للاستماع", "تصفير مكبر السماعة البعيدة 0x0000 · بلا تسريب صوتي · بلا صفير"], "s2": ["توثيق جنائي مشفر ضد التلاعب", "استرجاع 30 ثانية وختم SHA-256", "احفظ آخر 30 ثانية بعد سماعها · يكشف تعديل بت واحد على الفور"], "ui": {"mode_pill": "✨ مبسط / 🎛️ استوديو", "b1": "ميزة حصرية ١ · عزل السماعة المنفصل", "left_bud": "🎙️ فردة الالتقاط البعيد", "left_sub": "🔇 0x0000 صامت بلا صفير", "right_bud": "👂 فردة الاستماع بأذنك", "right_sub": "🔊 وضوح صوتي 25x خاص", "cta_listen": "● الاستماع المباشر نشط الآن", "gain_lbl": "مضخم وضوح الصوت الذكي", "b2": "ميزة حصرية ٢ · استرجاع 30ث و SHA-256", "cert_ok": "✓ MATCH · سلسلة SHA-256 أصلية 100%", "cert_bad": "✗ MISMATCH · تم كشف تلاعب 1-بت!", "rec_btn": "● تسجيل موثق بـ SHA-256 (+30 ثانية)", "eq_title": "جودة 48kHz فائقة · معادل احترافي 6 نطاقات", "sensor_title": "مستشعر 6 محاور + الضغط الجوي وقفل OLED", "offline_tag": "🔒 يعمل محلياً 100% بدون سحابة · 15 لغة"}}, {"code": "vi", "label": "Tiếng Việt", "dir": "ltr", "name": "EarCast: Mic 1-Tai & Tăng Âm", "subtitle": "Nghe Rõ 25x & Ghi Âm SHA-256", "promo": "Độc quyền: Đặt 1 tai nghe ở xa làm mic thu âm tắt loa (0x0000 chống hú) + đeo tai kia nghe rõ 25x! Tích hợp ghi lùi 30 giây và chứng thư chống chỉnh sửa SHA-256.", "s1": ["CÔNG NGHỆ TÁCH ĐÔI TAI NGHE TWS", "1 Tai Đặt Xa Thu · 1 Tai Nghe", "Khóa loa tai thu âm về 0x0000 im lặng · Không lộ tiếng · Không hú"], "s2": ["BẰNG CHỨNG CHỐNG CHỈNH SỬA", "Ghi Lùi -30s & Niêm Phong SHA256", "Lưu trọn 30 giây trước khi bấm Ghi · Phát hiện ngay cả 1 bit bị sửa"], "ui": {"mode_pill": "✨ Cơ bản / 🎛️ Studio", "b1": "ĐỘC QUYỀN #1 · TÁCH 1 TAI THU & 1 NGHE", "left_bud": "🎙️ Tai Trái: Đặt Bàn", "left_sub": "🔇 0x0000 Tắt Loa · Chống Hú", "right_bud": "👂 Tai Phải: Đeo Nghe", "right_sub": "🔊 Giọng Rõ 25x Riêng Tư", "cta_listen": "● ĐANG NGHE TRỰC TIẾP (AirPods Pro)", "gain_lbl": "Độ Khuếch Đại Giọng Nói Thông Minh", "b2": "ĐỘC QUYỀN #2 · GHI LÙI 30s & SHA-256", "cert_ok": "✓ MATCH · Chuỗi SHA-256 V2 Nguyên Bản", "cert_bad": "✗ MISMATCH · Phát Hiện Sửa 1-Bit!", "rec_btn": "● Đang Ghi SHA-256 (+30s Trước Đó)", "eq_title": "Âm Thanh 48kHz Hi-Res · EQ Tham Số 6 Dải", "sensor_title": "IMU 6 Trục + Bước Chân + Áp Suất & Khóa OLED", "offline_tag": "🔒 100% Ngoại Tuyến Trên Máy · 15 Ngôn Ngữ"}}, {"code": "th", "label": "ไทย", "dir": "ltr", "name": "EarCast: ไมค์1ข้าง&ขยายเสียง", "subtitle": "แยกหูฟังรับเสียงไกล & SHA-256", "promo": "เอกสิทธิ์เฉพาะ: วางหูฟัง 1 ข้างรับเสียงระยะไกลแบบปิดลำโพงเงียบสนิท (0x0000 ไม่หอน) แล้วฟังชัด 25x จากอีกข้าง! พร้อมอัดย้อนหลัง 30 วินาทีและใบรับรอง SHA-256", "s1": ["เทคโนโลยีแยกหูฟังไร้สายแท้", "วาง 1 ข้างรับเสียง · สวม 1 ข้างฟัง", "ล็อกลำโพงฝั่งรับเสียงเป็น 0x0000 เงียบสนิท · เสียงไม่รั่ว · ไม่หอน"], "s2": ["หลักฐานดิจิทัลป้องกันการแก้ไข", "อัดย้อนหลัง -30วิ & SHA-256", "ดึงเสียง 30 วินาทีก่อนกดอัดอัตโนมัติ · ตรวจจับการแก้แม้เพียง 1 บิต"], "ui": {"mode_pill": "✨ โหมดง่าย / 🎛️ สตูดิโอ", "b1": "เอกสิทธิ์ #1 · แยกหูฟังรับเสียงและฟัง", "left_bud": "🎙️ ซ้าย: วางบนโต๊ะ", "left_sub": "🔇 0x0000 ปิดลำโพงเงียบ", "right_bud": "👂 ขวา: สวมในหู", "right_sub": "🔊 เสียงพูดชัด 25x ส่วนตัว", "cta_listen": "● กำลังฟังเสียงสดคมชัด (AirPods Pro)", "gain_lbl": "ระดับขยายความชัดเสียงพูดอัจฉริยะ", "b2": "เอกสิทธิ์ #2 · ย้อน 30วิ & SHA-256", "cert_ok": "✓ MATCH · ลูกโซ่ SHA-256 ต้นฉบับแท้ 100%", "cert_bad": "✗ MISMATCH · ตรวจพบการแก้ไข 1 บิต!", "rec_btn": "● กำลังอัดเสียง SHA-256 (+ย้อนหลัง 30วิ)", "eq_title": "เสียง 48kHz Hi-Res · อีควอไลเซอร์ 6 ย่าน", "sensor_title": "IMU 6 แกน + ก้าวเดิน + ความดัน & ล็อกจอดำ", "offline_tag": "🔒 ประมวลผลออฟไลน์ในเครื่อง 100% · 15 ภาษา"}}];
+let cur = LOCALES[0];
+let tampered = false;
+const sel = document.getElementById('langSel');
+LOCALES.forEach((l, i) => {
+  const o = document.createElement('option');
+  o.value = i; o.textContent = l.label + ' (' + l.code + ')';
+  sel.appendChild(o);
+});
+function renderText() {
+  document.documentElement.dir = cur.dir;
+  document.getElementById('hName').textContent = cur.name;
+  document.getElementById('hSub').textContent = cur.subtitle;
+  document.getElementById('hPromo').textContent = cur.promo;
+  document.getElementById('s1Badge').textContent = cur.s1[0];
+  document.getElementById('s1Title').textContent = cur.s1[1];
+  document.getElementById('s1Sub').textContent = cur.s1[2];
+  document.getElementById('s2Badge').textContent = cur.s2[0];
+  document.getElementById('s2Title').textContent = cur.s2[1];
+  document.getElementById('s2Sub').textContent = cur.s2[2];
+  document.getElementById('offTag').textContent = cur.ui.offline_tag;
+  updateTamperUI();
+}
+function updateTamperUI() {
+  const hb = document.getElementById('hashBox');
+  const btn = document.getElementById('tamperBtn');
+  if (!tampered) {
+    hb.innerHTML = '<div style="color:#34D399;font-weight:800;">' + cur.ui.cert_ok + '</div><div dir="ltr" style="color:#94A3B8;margin-top:6px;">PCM_V2: c34fd8a1...90e2<br/>FILE_8K: 69b37d04...441a<br/>SEAL_V2: c940eb77...19f0</div>';
+    btn.className = 'btn';
+    btn.textContent = '⚡ Simulate 1-Bit Audio Tamper (0x1F04)';
+  } else {
+    hb.innerHTML = '<div style="color:#FDA4AF;font-weight:800;">' + cur.ui.cert_bad + '</div><div dir="ltr" style="color:#FB7185;margin-top:6px;">PCM_V2: c34fd8a1...90e2<br/>FILE_8K: f81209cc...e003 [BROKEN!]<br/>SEAL_V2: MISMATCH @ Block #1</div>';
+    btn.className = 'btn clean';
+    btn.textContent = '↺ Restore Original Authentic Stream';
+  }
+}
+document.getElementById('tamperBtn').onclick = () => { tampered = !tampered; updateTamperUI(); };
+sel.onchange = e => { cur = LOCALES[+e.target.value]; renderText(); };
+renderText();
+
+const cv = document.getElementById('waveCanvas');
+const ctx = cv.getContext('2d');
+let t = 0;
+function loop() {
+  t += 0.04;
+  ctx.clearRect(0, 0, cv.width, cv.height);
+  const lx = 95, rx = 425, cy = 95;
+  for (let i = 0; i < 3; i++) {
+    const p = ((t * 0.55 + i * 0.33) % 1);
+    ctx.strokeStyle = 'rgba(245,158,11,' + (1 - p) * 0.8 + ')';
+    ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.arc(lx, cy, 18 + p * 54, 0, Math.PI * 2); ctx.stroke();
+  }
+  const px = lx + (rx - lx) * ((t * 0.65) % 1);
+  ctx.fillStyle = '#38BDF8';
+  ctx.beginPath(); ctx.arc(px, cy, 7, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = '#10B981'; ctx.lineWidth = 3.5;
+  ctx.beginPath(); ctx.arc(rx, cy, 24 + 10 * Math.sin(t * 3), 0, Math.PI * 2); ctx.stroke();
+  ctx.fillStyle = '#FBBF24'; ctx.font = 'bold 13px sans-serif';
+  ctx.fillText('0x0000 SILENT MIC', 32, 172);
+  ctx.fillStyle = '#34D399';
+  ctx.fillText('25x PRIVATE HD', 365, 172);
+  requestAnimationFrame(loop);
+}
+loop();
+</script>
+</body>
+</html>
