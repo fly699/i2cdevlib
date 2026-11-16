@@ -1,7 +1,7 @@
 # 律动健走 (WalkFit) Official Website & Legal Center
 
 **Official Website / 官方网站**: [https://fly699.github.io/i2cdevlib/](https://fly699.github.io/i2cdevlib/)  
-**App Store (iOS / iPadOS)**: [https://apps.apple.com/app/id6829816023](https://apps.apple.com/app/id6829816023)  
+**App Store (iOS)**: [https://apps.apple.com/app/id6829816023](https://apps.apple.com/app/id6829816023)  
 **China MIIT App ICP Filing / 工信部 App ICP 备案号**: [京ICP备2026077713号-1A](https://beian.miit.gov.cn/)  
 **Official Support Email / 官方联系邮箱**: [t58@163.com](mailto:t58@163.com)
 
@@ -20,4 +20,4 @@
 
 ---
 
-© 2026 WalkFit Clinical Sports Lab (律动健走 WalkFit). All rights reserved.
+© 2026 WalkFit Sports & Wellness Lab (律动健走 WalkFit). All rights reserved.
